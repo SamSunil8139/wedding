@@ -124,7 +124,7 @@ letter-spacing:1.5px;
 max-width:800px;
 padding:20px;
 line-height:1.6;
-text-shadow: 0 4px 15px rgba(0,0,0,0.5);
+text-shadow:0 4px 15px rgba(0,0,0,0.5);
 }
 
 .poem-line{margin:10px 0;}
@@ -146,39 +146,26 @@ gap:20px;
 justify-content:center;
 flex-wrap:wrap;
 margin-bottom:20px;
-perspective:1000px;
 }
 
-.flip-box{
-width:90px;
-height:110px;
-position:relative;
-}
-
-.flip-card{
-width:100%;
-height:100%;
+.time-box{
 background:#7a1f2b;
 color:white;
+padding:20px;
 border-radius:12px;
-display:flex;
-flex-direction:column;
-justify-content:center;
-align-items:center;
-font-size:28px;
-font-weight:600;
-transform-style:preserve-3d;
-transition:transform 0.6s;
+min-width:90px;
 }
 
-.flip-card.flip{
-transform:rotateX(180deg);
+.time-box span{
+display:block;
+font-size:28px;
+font-weight:600;
 }
 
 .label{
 font-size:12px;
 letter-spacing:2px;
-margin-top:5px;
+margin-top:6px;
 }
 
 .until-text{letter-spacing:3px;font-size:13px;margin-bottom:25px;font-weight:600;}
@@ -247,12 +234,8 @@ IT WOULD BE AN HONOR TO HAVE YOU PRESENT AT THIS IMPORTANT MOMENT.
 <div class="time-text">10:00 AM</div>
 
 <div class="countdown-title">COUNTDOWN</div>
-<div class="countdown">
-<div class="flip-box"><div class="flip-card" id="days"></div><div class="label">DAYS</div></div>
-<div class="flip-box"><div class="flip-card" id="hours"></div><div class="label">HRS</div></div>
-<div class="flip-box"><div class="flip-card" id="minutes"></div><div class="label">MIN</div></div>
-<div class="flip-box"><div class="flip-card" id="seconds"></div><div class="label">SEC</div></div>
-</div>
+
+<div class="countdown" id="countdown"></div>
 
 <div class="until-text">UNTIL THE BIG DAY</div>
 <div class="celebration-text">THE CELEBRATION WILL TAKE PLACE AT</div>
@@ -271,7 +254,7 @@ VIEW LOCATION
 
 <script>
 function openInvite(){
-const opening = document.getElementById("opening");
+const opening=document.getElementById("opening");
 opening.style.opacity="0";
 setTimeout(()=>{
 opening.style.display="none";
@@ -279,36 +262,29 @@ document.querySelector(".soft-red").scrollIntoView({behavior:"smooth"});
 },1200);
 }
 
-const weddingDate = new Date("April 27, 2026 10:00:00").getTime();
+const weddingDate=new Date("April 27, 2026 10:00:00").getTime();
 
-function updateCountdown(){
-const now = new Date().getTime();
-const distance = weddingDate - now;
+setInterval(function(){
+const now=new Date().getTime();
+const distance=weddingDate-now;
 
-const days = Math.floor(distance/(1000*60*60*24));
-const hours = Math.floor((distance%(1000*60*60*24))/(1000*60*60));
-const minutes = Math.floor((distance%(1000*60*60))/(1000*60));
-const seconds = Math.floor((distance%(1000*60))/1000);
-
-flip("days",days);
-flip("hours",hours);
-flip("minutes",minutes);
-flip("seconds",seconds);
+if(distance<0){
+document.getElementById("countdown").innerHTML="The Big Day Is Here ❤️";
+return;
 }
 
-function flip(id,value){
-const el=document.getElementById(id);
-if(el.innerHTML!=value){
-el.classList.add("flip");
-setTimeout(()=>{
-el.innerHTML=value;
-el.classList.remove("flip");
-},300);
-}
-}
+const days=Math.floor(distance/(1000*60*60*24));
+const hours=Math.floor((distance%(1000*60*60*24))/(1000*60*60));
+const minutes=Math.floor((distance%(1000*60*60))/(1000*60));
+const seconds=Math.floor((distance%(1000*60))/1000);
 
-setInterval(updateCountdown,1000);
-updateCountdown();
+document.getElementById("countdown").innerHTML=`
+<div class="time-box"><span>${days}</span><div class="label">DAYS</div></div>
+<div class="time-box"><span>${hours}</span><div class="label">HRS</div></div>
+<div class="time-box"><span>${minutes}</span><div class="label">MIN</div></div>
+<div class="time-box"><span>${seconds}</span><div class="label">SEC</div></div>
+`;
+},1000);
 </script>
 
 </body>
