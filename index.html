@@ -11,12 +11,11 @@
 *{margin:0;padding:0;box-sizing:border-box;}
 body{
 font-family:'Montserrat',sans-serif;
-background:#f4efe8;
+background:#f5f1ea;
 overflow:hidden;
 }
 
 /* CURTAIN */
-
 #curtain{
 position:fixed;
 width:100%;
@@ -28,43 +27,45 @@ z-index:1000;
 .panel{
 flex:1;
 background:linear-gradient(90deg,#7b1e1e,#a83232);
-transition:2s ease;
+transition:1.8s ease;
 }
 
 #curtain.open .left{transform:translateX(-100%);}
 #curtain.open .right{transform:translateX(100%);}
 
 /* SCRATCH SCREEN */
-
-#scratchContainer{
-position:absolute;
+#scratchScreen{
+position:fixed;
 width:100%;
 height:100vh;
+background:#f5f1ea;
 display:flex;
 justify-content:center;
 align-items:center;
 flex-direction:column;
-background:#f4efe8;
+z-index:500;
 }
 
-#hiddenContent{
+#revealText{
 font-family:'Playfair Display',serif;
-font-size:30px;
+font-size:32px;
 text-align:center;
 opacity:0;
 transition:1s ease;
+z-index:1;
 }
 
 canvas{
 position:absolute;
+top:0;
+left:0;
 }
 
 /* FLOWERS */
-
 .flower{
 position:fixed;
 top:-20px;
-font-size:22px;
+font-size:24px;
 animation:fall linear forwards;
 }
 
@@ -73,7 +74,6 @@ to{transform:translateY(110vh) rotate(360deg);}
 }
 
 /* MAIN CONTENT */
-
 #mainContent{
 display:none;
 height:100vh;
@@ -85,7 +85,7 @@ padding:60px 20px;
 .names{
 font-family:'Playfair Display',serif;
 font-size:32px;
-margin:20px 0;
+margin:15px 0;
 }
 
 .details{
@@ -97,7 +97,7 @@ line-height:1.8;
 margin-top:25px;
 display:inline-block;
 padding:12px 30px;
-background:goldenrod;
+background:#c6a75e;
 color:#fff;
 border-radius:30px;
 text-decoration:none;
@@ -108,21 +108,19 @@ text-decoration:none;
 
 <body>
 
-<!-- Curtain -->
 <div id="curtain">
 <div class="panel left"></div>
 <div class="panel right"></div>
 </div>
 
-<!-- Scratch Section -->
-<div id="scratchContainer">
-<div id="hiddenContent">
-April 27, 2026<br>10:00 AM
+<div id="scratchScreen">
+<div id="revealText">
+April 27, 2026<br>
+10:00 AM
 </div>
 <canvas id="scratchCanvas"></canvas>
 </div>
 
-<!-- Main Content -->
 <div id="mainContent">
 <div class="names">Aswathi Ashokan</div>
 <div>&</div>
@@ -141,14 +139,18 @@ View Location
 </a>
 </div>
 
+<audio id="music" loop>
+<source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_44f7b1c31c.mp3?filename=wedding-love-11085.mp3" type="audio/mpeg">
+</audio>
+
 <script>
 
-// OPEN CURTAIN AFTER 1.5s
+/* Curtain open */
 setTimeout(()=>{
 document.getElementById("curtain").classList.add("open");
-},1500);
+},1200);
 
-// SCRATCH EFFECT
+/* Scratch Setup */
 const canvas = document.getElementById("scratchCanvas");
 const ctx = canvas.getContext("2d");
 
@@ -162,44 +164,52 @@ ctx.globalCompositeOperation = "destination-out";
 
 let isDrawing = false;
 
+function getPosition(e){
+if(e.touches){
+return {x:e.touches[0].clientX, y:e.touches[0].clientY};
+}
+return {x:e.clientX, y:e.clientY};
+}
+
+function scratch(e){
+if(!isDrawing) return;
+const pos = getPosition(e);
+ctx.beginPath();
+ctx.arc(pos.x,pos.y,35,0,Math.PI*2);
+ctx.fill();
+checkReveal();
+}
+
 canvas.addEventListener("mousedown",()=>isDrawing=true);
 canvas.addEventListener("mouseup",()=>isDrawing=false);
 canvas.addEventListener("mousemove",scratch);
 
 canvas.addEventListener("touchstart",()=>isDrawing=true);
 canvas.addEventListener("touchend",()=>isDrawing=false);
-canvas.addEventListener("touchmove",(e)=>{
-scratch(e.touches[0]);
-});
+canvas.addEventListener("touchmove",scratch);
 
-function scratch(e){
-if(!isDrawing) return;
-ctx.beginPath();
-ctx.arc(e.clientX,e.clientY,30,0,Math.PI*2);
-ctx.fill();
-checkReveal();
-}
-
+/* Reveal Logic */
 function checkReveal(){
 const pixels = ctx.getImageData(0,0,canvas.width,canvas.height);
-let transparent = 0;
+let cleared = 0;
 
 for(let i=0;i<pixels.data.length;i+=4){
-if(pixels.data[i+3]===0) transparent++;
+if(pixels.data[i+3] === 0) cleared++;
 }
 
-if(transparent > pixels.data.length/8){
-document.getElementById("hiddenContent").style.opacity="1";
+if(cleared > pixels.data.length * 0.25){
+document.getElementById("revealText").style.opacity="1";
 flowerShower();
 setTimeout(()=>{
-document.getElementById("scratchContainer").style.display="none";
+document.getElementById("scratchScreen").style.display="none";
 document.getElementById("mainContent").style.display="block";
 document.body.style.overflow="auto";
+document.getElementById("music").play();
 },2500);
 }
 }
 
-// FLOWER SHOWER
+/* Flower Shower */
 function flowerShower(){
 for(let i=0;i<40;i++){
 let flower=document.createElement("div");
