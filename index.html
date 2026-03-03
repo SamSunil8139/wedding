@@ -135,7 +135,7 @@ line-height:1.8;
 opacity:0.9;
 }
 
-/* ================= PHOTO SECTION (CLEAN POLISHED EDGES) ================= */
+/* ================= PHOTO SECTION (CLEAN CUT) ================= */
 
 .photo-section{
 position:relative;
@@ -146,34 +146,9 @@ align-items:center;
 text-align:center;
 color:white;
 background:url('couple.JPG') center/cover no-repeat;
-overflow:hidden;
 }
 
-/* Subtle feather blend only */
-.photo-section::before{
-content:"";
-position:absolute;
-inset:0;
-pointer-events:none;
-background:
-linear-gradient(to bottom,
-rgba(122,31,43,0.75) 0%,
-rgba(0,0,0,0) 18%,
-rgba(0,0,0,0) 82%,
-rgba(255,255,255,0.75) 100%);
-}
-
-/* Very soft vignette */
-.photo-section::after{
-content:"";
-position:absolute;
-inset:0;
-pointer-events:none;
-background:radial-gradient(circle at center,
-rgba(0,0,0,0) 65%,
-rgba(0,0,0,0.22) 100%);
-}
-
+/* Poem */
 .photo-caption{
 position:relative;
 z-index:2;
