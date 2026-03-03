@@ -18,7 +18,7 @@ overflow-x:hidden;
 scroll-behavior:smooth;
 }
 
-/* Softer Romantic Gradient */
+/* Section Base */
 .section{
 height:100vh;
 display:flex;
@@ -27,9 +27,9 @@ justify-content:center;
 align-items:center;
 text-align:center;
 padding:20px;
-position:relative;
 }
 
+/* Softer Romantic Red */
 .soft-red{
 background:linear-gradient(135deg,#7a1f2b,#8e2c3a,#6d1a25);
 }
@@ -52,7 +52,7 @@ transition:1.2s ease;
 font-family:'Cormorant Garamond',serif;
 font-size:70px;
 letter-spacing:10px;
-margin-bottom:10px;
+margin-bottom:15px;
 }
 
 .sub-text{
@@ -78,29 +78,26 @@ background:white;
 color:#7a1f2b;
 }
 
-/* Floral SVG Decoration */
-.corner{
-position:absolute;
-width:120px;
-opacity:0.2;
-}
-.top-left{top:20px;left:20px;}
-.top-right{top:20px;right:20px;}
-.bottom-left{bottom:20px;left:20px;}
-.bottom-right{bottom:20px;right:20px;}
-
-/* Names Page */
-.names{
-font-family:'Cormorant Garamond',serif;
-font-size:52px;
-letter-spacing:3px;
-}
-
+/* Names Styling */
 .invite-line{
 letter-spacing:3px;
 font-size:13px;
 margin-bottom:40px;
 opacity:0.9;
+}
+
+.parent-text{
+font-size:14px;
+letter-spacing:2px;
+margin-bottom:10px;
+opacity:0.8;
+}
+
+.names{
+font-family:'Cormorant Garamond',serif;
+font-size:52px;
+letter-spacing:3px;
+margin-bottom:25px;
 }
 
 .invite-bottom{
@@ -112,50 +109,52 @@ line-height:1.8;
 opacity:0.9;
 }
 
-/* Date Page */
-.date-big{
-font-family:'Cormorant Garamond',serif;
-font-size:60px;
-letter-spacing:5px;
-}
-
-.details{
-margin-top:20px;
-letter-spacing:2px;
-}
-
-/* Fade to White Transition */
+/* Fade to white divider */
 .fade-divider{
 height:150px;
 background:linear-gradient(to bottom, rgba(122,31,43,1), white);
 }
 
-/* Details Card */
-.details-card{
+/* Date Page */
+.date-page{
 background:white;
 color:#7a1f2b;
-padding:60px 40px;
-border-radius:25px;
-box-shadow:0 20px 60px rgba(0,0,0,0.3);
-margin-top:60px;
-max-width:700px;
 }
 
+.date-big{
+font-family:'Cormorant Garamond',serif;
+font-size:60px;
+letter-spacing:5px;
+margin-bottom:20px;
+}
+
+.details{
+letter-spacing:2px;
+line-height:1.8;
+}
+
+/* Plain Location Button */
 .map-btn{
-margin-top:30px;
+margin-top:40px;
 display:inline-block;
-padding:14px 35px;
+padding:14px 40px;
 background:#7a1f2b;
 color:white;
-border-radius:30px;
+border-radius:40px;
 text-decoration:none;
+font-size:14px;
+letter-spacing:2px;
+transition:0.3s;
+}
+.map-btn:hover{
+background:#5a141d;
 }
 
-/* SVG Petals Animation */
+/* SVG Petals */
 .petal{
 position:fixed;
 top:-50px;
-width:20px;
+width:18px;
 opacity:0.8;
 animation:fall linear infinite;
 }
@@ -169,11 +168,12 @@ padding:80px 20px;
 text-align:center;
 background:white;
 color:#7a1f2b;
+font-size:14px;
 }
 
 @media(max-width:768px){
 .names{font-size:32px;}
-.date-big{font-size:38px;}
+.date-big{font-size:36px;}
 }
 </style>
 </head>
@@ -200,55 +200,45 @@ document.body.appendChild(petal);
 <button class="open-btn" onclick="openInvite()">Open Invitation</button>
 </div>
 
-<!-- Page 1 Names -->
+<!-- Page 1 -->
 <section class="section soft-red">
+
 <div class="invite-line">
 You are cordially invited to celebrate the wedding of
 </div>
 
+<div class="parent-text">Daughter of Ashokan U P & Mohini P K</div>
 <div class="names">Aswathi Ashokan</div>
-<div style="margin:20px 0;">&</div>
+
+<div style="margin:15px 0;">&</div>
+
 <div class="names">Sam Sunil</div>
+<div class="parent-text">Son of Sunil K Samuel & Thresiamma K A</div>
 
 <div class="invite-bottom">
 WE WOULD LIKE TO INVITE YOU TO CELEBRATE WITH US THE MOST SPECIAL DAY OF OUR LIVES.
 IT WOULD BE AN HONOR TO HAVE YOU PRESENT AT THIS IMPORTANT MOMENT.
 </div>
+
 </section>
 
 <div class="fade-divider"></div>
 
-<!-- Page 2 Date -->
-<section class="section" style="background:white;color:#7a1f2b;">
+<!-- Page 2 -->
+<section class="section date-page">
+
 <div class="date-big">APRIL 27, 2026</div>
+
 <div class="details">
 10:00 AM<br>
 VTAM Auditorium<br>
 Cherthala near Manorama Junction
 </div>
 
-<div class="details-card">
-
-Daughter of<br>
-<strong>Ashokan U P & Mohini P K</strong>
-
-<br><br>
-
-Son of<br>
-<strong>Sunil K Samuel & Thresiamma K A</strong>
-
-<br><br>
-
 <a class="map-btn" href="https://maps.app.goo.gl/mobFw1b7dZiGS3Qf7" target="_blank">
-View Location
+VIEW LOCATION
 </a>
 
-<br><br>
-
-<a class="map-btn" href="https://maps.app.goo.gl/mobFw1b7dZiGS3Qf7" target="_blank">
-View Location
-</a>
-</div>
 </section>
 
 <footer>
