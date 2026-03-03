@@ -78,7 +78,7 @@ background:white;
 color:#7a1f2b;
 }
 
-/* Names Styling */
+/* Names Page */
 .invite-line{
 letter-spacing:3px;
 font-size:13px;
@@ -109,7 +109,7 @@ line-height:1.8;
 opacity:0.9;
 }
 
-/* Fade to white divider */
+/* Fade divider */
 .fade-divider{
 height:150px;
 background:linear-gradient(to bottom, rgba(122,31,43,1), white);
@@ -125,18 +125,65 @@ color:#7a1f2b;
 font-family:'Cormorant Garamond',serif;
 font-size:60px;
 letter-spacing:5px;
-margin-bottom:20px;
+margin-bottom:10px;
 }
 
-.details{
+.time-text{
+letter-spacing:3px;
+margin-bottom:25px;
+}
+
+/* Countdown */
+.countdown-title{
+letter-spacing:4px;
+font-size:14px;
+margin-bottom:15px;
+}
+
+.countdown{
+display:flex;
+gap:15px;
+flex-wrap:wrap;
+justify-content:center;
+margin-bottom:15px;
+}
+
+.time-box{
+background:#7a1f2b;
+color:white;
+padding:15px 20px;
+border-radius:10px;
+min-width:70px;
+}
+
+.time-box span{
+display:block;
+font-size:20px;
+font-weight:600;
+}
+
+.until-text{
+letter-spacing:3px;
+font-size:13px;
+margin-bottom:30px;
+}
+
+/* Location */
+.location-text{
 letter-spacing:2px;
 line-height:1.8;
+margin-bottom:25px;
 }
 
-/* Plain Location Button */
+/* Palace SVG */
+.palace{
+width:120px;
+opacity:0.8;
+margin-bottom:25px;
+}
+
+/* Button */
 .map-btn{
-margin-top:40px;
-display:inline-block;
 padding:14px 40px;
 background:#7a1f2b;
 color:white;
@@ -164,7 +211,7 @@ to{transform:translateY(110vh) rotate(360deg);}
 
 /* Footer */
 footer{
-padding:80px 20px;
+padding:60px 20px;
 text-align:center;
 background:white;
 color:#7a1f2b;
@@ -193,7 +240,7 @@ document.body.appendChild(petal);
 }
 </script>
 
-<!-- Opening Screen -->
+<!-- Opening -->
 <div id="opening">
 <div class="monogram">A & S</div>
 <div class="sub-text">A CELEBRATION OF LOVE</div>
@@ -228,12 +275,25 @@ IT WOULD BE AN HONOR TO HAVE YOU PRESENT AT THIS IMPORTANT MOMENT.
 <section class="section date-page">
 
 <div class="date-big">APRIL 27, 2026</div>
+<div class="time-text">10:00 AM</div>
 
-<div class="details">
-10:00 AM<br>
+<div class="countdown-title">COUNTDOWN</div>
+
+<div class="countdown" id="countdown"></div>
+
+<div class="until-text">UNTIL THE BIG DAY</div>
+
+<div class="location-text">
 VTAM Auditorium<br>
 Cherthala near Manorama Junction
 </div>
+
+<!-- Palace SVG -->
+<svg class="palace" viewBox="0 0 64 64">
+<path fill="#7a1f2b" d="M8 28h48v20H8z"/>
+<path fill="#7a1f2b" d="M4 28l28-18 28 18z"/>
+<circle cx="32" cy="20" r="3" fill="white"/>
+</svg>
 
 <a class="map-btn" href="https://maps.app.goo.gl/mobFw1b7dZiGS3Qf7" target="_blank">
 VIEW LOCATION
@@ -256,6 +316,25 @@ document.getElementById("opening").style.opacity="0";
 setTimeout(()=>{document.getElementById("opening").style.display="none";},1200);
 document.getElementById("bgMusic").play();
 }
+
+const weddingDate = new Date("April 27, 2026 10:00:00").getTime();
+
+setInterval(function(){
+const now = new Date().getTime();
+const distance = weddingDate - now;
+
+const days = Math.floor(distance / (1000*60*60*24));
+const hours = Math.floor((distance % (1000*60*60*24))/(1000*60*60));
+const minutes = Math.floor((distance % (1000*60*60))/(1000*60));
+const seconds = Math.floor((distance % (1000*60))/1000);
+
+document.getElementById("countdown").innerHTML = `
+<div class="time-box"><span>${days}</span>DAYS</div>
+<div class="time-box"><span>${hours}</span>HRS</div>
+<div class="time-box"><span>${minutes}</span>MIN</div>
+<div class="time-box"><span>${seconds}</span>SEC</div>
+`;
+},1000);
 </script>
 
 </body>
