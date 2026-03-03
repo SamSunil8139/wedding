@@ -18,7 +18,8 @@ overflow-x:hidden;
 scroll-behavior:smooth;
 }
 
-/* Section Base */
+/* ================= SECTION BASE ================= */
+
 .section{
 min-height:100vh;
 display:flex;
@@ -134,7 +135,7 @@ line-height:1.8;
 opacity:0.9;
 }
 
-/* ================= PHOTO SECTION (FLOW BLEND ONLY) ================= */
+/* ================= PHOTO SECTION (CLEAN POLISHED EDGES) ================= */
 
 .photo-section{
 position:relative;
@@ -145,20 +146,32 @@ align-items:center;
 text-align:center;
 color:white;
 background:url('couple.jpg') center/cover no-repeat;
+overflow:hidden;
 }
 
-/* Flow In (Top Red) + Flow Out (Bottom White) */
-.photo-overlay{
+/* Subtle feather blend only */
+.photo-section::before{
+content:"";
 position:absolute;
 inset:0;
+pointer-events:none;
 background:
 linear-gradient(to bottom,
-rgba(122,31,43,1) 0%,
-rgba(122,31,43,0.85) 10%,
-rgba(0,0,0,0.4) 35%,
-rgba(0,0,0,0.4) 65%,
-rgba(255,255,255,0.85) 90%,
-rgba(255,255,255,1) 100%);
+rgba(122,31,43,0.75) 0%,
+rgba(0,0,0,0) 18%,
+rgba(0,0,0,0) 82%,
+rgba(255,255,255,0.75) 100%);
+}
+
+/* Very soft vignette */
+.photo-section::after{
+content:"";
+position:absolute;
+inset:0;
+pointer-events:none;
+background:radial-gradient(circle at center,
+rgba(0,0,0,0) 65%,
+rgba(0,0,0,0.22) 100%);
 }
 
 .photo-caption{
@@ -271,7 +284,8 @@ transition:0.3s;
 background:#5a141d;
 }
 
-/* Mobile */
+/* ================= MOBILE ================= */
+
 @media(max-width:768px){
 
 .names{font-size:32px;}
@@ -327,7 +341,6 @@ IT WOULD BE AN HONOR TO HAVE YOU PRESENT AT THIS IMPORTANT MOMENT.
 
 <!-- PHOTO SECTION -->
 <section class="photo-section">
-<div class="photo-overlay"></div>
 <div class="photo-caption">
 <div class="poem-line">In your arms, I found my forever,</div>
 <div class="poem-line">In your smile, I found my home.</div>
