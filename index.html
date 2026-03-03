@@ -18,7 +18,7 @@ overflow-x:hidden;
 scroll-behavior:smooth;
 }
 
-/* Section Layout */
+/* Sections */
 .section{
 min-height:100vh;
 display:flex;
@@ -29,7 +29,6 @@ text-align:center;
 padding:40px 20px;
 }
 
-/* Romantic Gradient */
 .soft-red{
 background:linear-gradient(135deg,#7a1f2b,#8e2c3a,#6d1a25);
 }
@@ -39,7 +38,7 @@ background:linear-gradient(135deg,#7a1f2b,#8e2c3a,#6d1a25);
 position:fixed;
 width:100%;
 height:100vh;
-background:linear-gradient(135deg,#6d1a25,#8e2c3a);
+background:black; /* Dramatic luxury look */
 display:flex;
 flex-direction:column;
 justify-content:center;
@@ -48,18 +47,24 @@ z-index:1000;
 transition:1.2s ease;
 }
 
-.monogram{
-font-family:'Cormorant Garamond',serif;
-font-size:70px;
-letter-spacing:10px;
-margin-bottom:15px;
+.opening-logo{
+width:300px;
+max-width:80%;
+margin-bottom:40px;
+opacity:0;
+animation:logoFade 2s ease forwards;
+}
+
+@keyframes logoFade{
+to{opacity:1;}
 }
 
 .sub-text{
 letter-spacing:4px;
 font-size:14px;
-margin-bottom:40px;
+margin-bottom:30px;
 opacity:0.8;
+color:white;
 }
 
 .open-btn{
@@ -75,7 +80,7 @@ transition:0.4s;
 }
 .open-btn:hover{
 background:white;
-color:#7a1f2b;
+color:black;
 }
 
 /* Page 1 */
@@ -90,7 +95,7 @@ opacity:0.9;
 font-size:14px;
 letter-spacing:2px;
 margin-bottom:10px;
-opacity:0.8;
+opacity:0.85;
 }
 
 .names{
@@ -109,7 +114,7 @@ line-height:1.8;
 opacity:0.9;
 }
 
-/* Fade Divider */
+/* Divider */
 .fade-divider{
 height:150px;
 background:linear-gradient(to bottom, rgba(122,31,43,1), white);
@@ -204,7 +209,7 @@ transition:0.3s;
 background:#5a141d;
 }
 
-/* Falling SVG Petals */
+/* Falling Petals */
 .petal{
 position:fixed;
 top:-50px;
@@ -234,7 +239,7 @@ font-size:14px;
 
 <body>
 
-<!-- Floating Petals -->
+<!-- Petals -->
 <script>
 for(let i=0;i<20;i++){
 let petal=document.createElementNS("http://www.w3.org/2000/svg","svg");
@@ -247,10 +252,10 @@ document.body.appendChild(petal);
 }
 </script>
 
-<!-- Opening Screen -->
+<!-- Opening -->
 <div id="opening">
-<div class="monogram">A & S</div>
-<div class="sub-text">A CELEBRATION OF LOVE</div>
+<img src="logo.png" class="opening-logo">
+<div class="sub-text">27 · APRIL · 2026</div>
 <button class="open-btn" onclick="openInvite()">Open Invitation</button>
 </div>
 
