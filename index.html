@@ -5,246 +5,282 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Aswathi & Sam | Wedding</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
 
 <style>
 *{margin:0;padding:0;box-sizing:border-box;}
 body{
 font-family:'Montserrat',sans-serif;
 background:#f5f1ea;
-overflow:hidden;
-text-align:center;
+color:#222;
+overflow-x:hidden;
+scroll-behavior:smooth;
 }
 
-/* INTRO SCREEN */
-
-#intro{
+/* OPEN SCREEN */
+#opening{
 position:fixed;
 width:100%;
 height:100vh;
+background:linear-gradient(135deg,#f5f1ea,#e9e2d8);
 display:flex;
 flex-direction:column;
 justify-content:center;
 align-items:center;
-background:linear-gradient(135deg,#f5f1ea,#e8e1d6);
 z-index:1000;
 transition:1s ease;
 }
 
-#intro h1{
+#opening h1{
 font-family:'Playfair Display',serif;
-font-size:30px;
-margin-bottom:25px;
+font-size:32px;
+letter-spacing:2px;
+margin-bottom:30px;
+animation:fadeIn 2s forwards;
 }
 
 .open-btn{
 padding:14px 40px;
-background:linear-gradient(45deg,#c6a75e,#e5c97a);
 border:none;
-border-radius:40px;
+background:linear-gradient(45deg,#c6a75e,#e5c97a);
 color:#fff;
+font-size:15px;
+border-radius:50px;
 cursor:pointer;
-font-size:14px;
+box-shadow:0 5px 20px rgba(0,0,0,0.15);
 }
 
-/* SCRATCH SCREEN */
-
-#scratchSection{
-display:none;
-position:fixed;
-width:100%;
-height:100vh;
-background:#f5f1ea;
-justify-content:center;
-align-items:center;
-flex-direction:column;
+/* SECTIONS */
+section{
+padding:100px 20px;
+text-align:center;
+max-width:900px;
+margin:auto;
 }
 
-#dateReveal{
+h2{
 font-family:'Playfair Display',serif;
 font-size:32px;
-opacity:0;
-transition:1s ease;
-z-index:1;
+margin-bottom:20px;
 }
 
-canvas{
-position:absolute;
+.gold-line{
+width:80px;
+height:3px;
+background:linear-gradient(45deg,#c6a75e,#e5c97a);
+margin:20px auto 40px auto;
 }
 
-/* FLOWERS */
-
-.flower{
-position:fixed;
-top:-20px;
-font-size:22px;
-animation:fall linear forwards;
-}
-
-@keyframes fall{
-to{transform:translateY(110vh) rotate(360deg);}
-}
-
-/* MAIN CONTENT */
-
-#mainContent{
-display:none;
-padding:80px 20px;
+/* HERO */
+.hero{
 min-height:100vh;
-background:#f5f1ea;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
 }
 
 .names{
 font-family:'Playfair Display',serif;
-font-size:32px;
-margin:15px 0;
+font-size:40px;
+letter-spacing:2px;
+}
+
+.and{
+margin:20px 0;
+color:#c6a75e;
+letter-spacing:4px;
 }
 
 .quote{
-margin:20px auto;
-max-width:500px;
+margin-top:30px;
 font-style:italic;
+max-width:600px;
 color:#777;
 }
 
-.details{
+/* DETAILS */
+.details-card{
+background:white;
+padding:50px 30px;
+border-radius:20px;
+box-shadow:0 10px 40px rgba(0,0,0,0.08);
+}
+
+.countdown{
+display:flex;
+justify-content:center;
+gap:15px;
 margin-top:30px;
-line-height:1.8;
+flex-wrap:wrap;
+}
+
+.time-box{
+background:#f5f1ea;
+padding:15px 20px;
+border-radius:12px;
+}
+
+.time-box span{
+display:block;
+font-size:22px;
+font-weight:600;
+color:#c6a75e;
 }
 
 .map-btn{
 margin-top:30px;
 display:inline-block;
 padding:12px 30px;
-background:#c6a75e;
+background:linear-gradient(45deg,#c6a75e,#e5c97a);
 color:#fff;
 border-radius:30px;
 text-decoration:none;
 }
 
+/* TIMELINE */
+.timeline-item{
+margin:30px 0;
+}
+
+.timeline-item h4{
+color:#c6a75e;
+margin-bottom:8px;
+}
+
+/* FOOTER */
+footer{
+padding:60px 20px;
+text-align:center;
+background:#e9e2d8;
+font-size:14px;
+}
+
+/* ANIMATION */
+.fade-up{
+opacity:0;
+transform:translateY(30px);
+transition:1s ease;
+}
+
+.fade-up.show{
+opacity:1;
+transform:translateY(0);
+}
+
+@media(max-width:768px){
+.names{font-size:28px;}
+}
 </style>
 </head>
 
 <body>
 
-<!-- INTRO -->
-<div id="intro">
+<div id="opening">
 <h1>You're Invited</h1>
-<button class="open-btn" onclick="startExperience()">Open Invitation</button>
+<button class="open-btn" onclick="openInvite()">Open Invitation</button>
 </div>
 
-<!-- SCRATCH -->
-<div id="scratchSection">
-<div id="dateReveal">
-April 27, 2026<br>10:00 AM
-</div>
-<canvas id="scratchCanvas"></canvas>
-</div>
-
-<!-- MAIN CONTENT -->
-<div id="mainContent">
+<section class="hero fade-up">
 <div class="names">Aswathi Ashokan</div>
-<div>&</div>
+<div class="and">&</div>
 <div class="names">Sam Sunil</div>
-
 <p class="quote">
 Two souls, one journey, a lifetime together.
 </p>
+</section>
 
-<div class="details">
+<section class="fade-up">
+<h2>Wedding Ceremony</h2>
+<div class="gold-line"></div>
+
+<div class="details-card">
+April 27, 2026<br>
+10:00 AM<br>
 VTAM Auditorium<br>
-Cherthala near Manorama Junction<br><br>
+Cherthala near Manorama Junction
 
-Bride: Ashokan U P & Mohini P K<br>
-Groom: Sunil K Samuel & Thresiamma K A
-</div>
+<div class="countdown" id="countdown"></div>
 
 <a class="map-btn" href="https://maps.app.goo.gl/mobFw1b7dZiGS3Qf7" target="_blank">
 View Location
 </a>
+
+<p style="margin-top:30px;font-size:14px;color:#666;">
+Bride: Ashokan U P & Mohini P K<br>
+Groom: Sunil K Samuel & Thresiamma K A
+</p>
+</div>
+</section>
+
+<section class="fade-up">
+<h2>Wedding Day Timeline</h2>
+<div class="gold-line"></div>
+
+<div class="timeline-item">
+<h4>09:30 AM</h4>
+<p>Guest Arrival</p>
 </div>
 
-<audio id="music" loop>
+<div class="timeline-item">
+<h4>10:00 AM</h4>
+<p>Wedding Ceremony</p>
+</div>
+
+<div class="timeline-item">
+<h4>12:00 PM</h4>
+<p>Reception & Lunch</p>
+</div>
+</section>
+
+<footer>
+We request the honor of your presence and blessings
+as we begin our new life together.
+</footer>
+
+<audio id="bgMusic" loop>
 <source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_44f7b1c31c.mp3?filename=wedding-love-11085.mp3" type="audio/mpeg">
 </audio>
 
 <script>
 
-function startExperience(){
-document.getElementById("intro").style.display="none";
-document.getElementById("scratchSection").style.display="flex";
-document.getElementById("music").play();
-setupScratch();
+function openInvite(){
+document.getElementById("opening").style.opacity="0";
+setTimeout(()=>{document.getElementById("opening").style.display="none";},1000);
+document.getElementById("bgMusic").play();
 }
 
-function setupScratch(){
-const canvas = document.getElementById("scratchCanvas");
-const ctx = canvas.getContext("2d");
+const weddingDate = new Date("April 27, 2026 10:00:00").getTime();
 
-canvas.width = window.innerWidth;
-canvas.height = window.innerHeight;
+setInterval(function(){
+const now = new Date().getTime();
+const distance = weddingDate - now;
 
-ctx.fillStyle="#c6a75e";
-ctx.fillRect(0,0,canvas.width,canvas.height);
+const days = Math.floor(distance / (1000*60*60*24));
+const hours = Math.floor((distance % (1000*60*60*24))/(1000*60*60));
+const minutes = Math.floor((distance % (1000*60*60))/(1000*60));
+const seconds = Math.floor((distance % (1000*60))/1000);
 
-ctx.globalCompositeOperation="destination-out";
+document.getElementById("countdown").innerHTML = `
+<div class="time-box"><span>${days}</span>Days</div>
+<div class="time-box"><span>${hours}</span>Hours</div>
+<div class="time-box"><span>${minutes}</span>Minutes</div>
+<div class="time-box"><span>${seconds}</span>Seconds</div>
+`;
+},1000);
 
-let drawing=false;
-
-function getPos(e){
-if(e.touches){
-return {x:e.touches[0].clientX,y:e.touches[0].clientY};
+/* Scroll Animation */
+const observer = new IntersectionObserver(entries=>{
+entries.forEach(entry=>{
+if(entry.isIntersecting){
+entry.target.classList.add('show');
 }
-return {x:e.clientX,y:e.clientY};
-}
+});
+},{threshold:0.2});
 
-function scratch(e){
-if(!drawing) return;
-const pos=getPos(e);
-ctx.beginPath();
-ctx.arc(pos.x,pos.y,35,0,Math.PI*2);
-ctx.fill();
-checkReveal();
-}
-
-canvas.addEventListener("mousedown",()=>drawing=true);
-canvas.addEventListener("mouseup",()=>drawing=false);
-canvas.addEventListener("mousemove",scratch);
-
-canvas.addEventListener("touchstart",()=>drawing=true);
-canvas.addEventListener("touchend",()=>drawing=false);
-canvas.addEventListener("touchmove",scratch);
-
-function checkReveal(){
-const pixels=ctx.getImageData(0,0,canvas.width,canvas.height);
-let cleared=0;
-
-for(let i=0;i<pixels.data.length;i+=4){
-if(pixels.data[i+3]===0) cleared++;
-}
-
-if(cleared > pixels.data.length*0.25){
-document.getElementById("dateReveal").style.opacity="1";
-flowerShower();
-setTimeout(()=>{
-document.getElementById("scratchSection").style.display="none";
-document.getElementById("mainContent").style.display="block";
-document.body.style.overflow="auto";
-},2500);
-}
-}
-}
-
-function flowerShower(){
-for(let i=0;i<40;i++){
-let flower=document.createElement("div");
-flower.className="flower";
-flower.innerHTML="🌸";
-flower.style.left=Math.random()*100+"vw";
-flower.style.animationDuration=(3+Math.random()*3)+"s";
-document.body.appendChild(flower);
-}
-}
+document.querySelectorAll('.fade-up').forEach(el=>{
+observer.observe(el);
+});
 
 </script>
 
