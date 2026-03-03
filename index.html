@@ -18,7 +18,7 @@ overflow-x:hidden;
 scroll-behavior:smooth;
 }
 
-/* Sections */
+/* Section Layout */
 .section{
 min-height:100vh;
 display:flex;
@@ -27,8 +27,16 @@ justify-content:center;
 align-items:center;
 text-align:center;
 padding:40px 20px;
+opacity:0;
+animation:sectionFade 1.5s ease forwards;
+animation-delay:0.6s;
 }
 
+@keyframes sectionFade{
+to{opacity:1;}
+}
+
+/* Romantic Gradient */
 .soft-red{
 background:linear-gradient(135deg,#7a1f2b,#8e2c3a,#6d1a25);
 }
@@ -38,7 +46,7 @@ background:linear-gradient(135deg,#7a1f2b,#8e2c3a,#6d1a25);
 position:fixed;
 width:100%;
 height:100vh;
-background:black; /* Dramatic luxury look */
+background:linear-gradient(135deg,#7a1f2b,#8e2c3a,#6d1a25);
 display:flex;
 flex-direction:column;
 justify-content:center;
@@ -47,26 +55,26 @@ z-index:1000;
 transition:1.2s ease;
 }
 
+/* Logo */
 .opening-logo{
-width:300px;
-max-width:80%;
+width:380px;
+max-width:90%;
 margin-bottom:40px;
 opacity:0;
-animation:logoFade 2s ease forwards;
+animation:logoFade 2s ease forwards, logoZoom 12s ease-in-out infinite alternate;
+filter: drop-shadow(0 0 25px rgba(255,215,150,0.4));
 }
 
 @keyframes logoFade{
 to{opacity:1;}
 }
 
-.sub-text{
-letter-spacing:4px;
-font-size:14px;
-margin-bottom:30px;
-opacity:0.8;
-color:white;
+@keyframes logoZoom{
+from{transform:scale(1);}
+to{transform:scale(1.05);}
 }
 
+/* Button */
 .open-btn{
 padding:14px 45px;
 border:1px solid white;
@@ -80,7 +88,7 @@ transition:0.4s;
 }
 .open-btn:hover{
 background:white;
-color:black;
+color:#7a1f2b;
 }
 
 /* Page 1 */
@@ -180,7 +188,7 @@ line-height:1.8;
 margin-bottom:25px;
 }
 
-/* Palace Image */
+/* Palace */
 .palace-img{
 width:500px;
 max-width:95%;
@@ -239,7 +247,6 @@ font-size:14px;
 
 <body>
 
-<!-- Petals -->
 <script>
 for(let i=0;i<20;i++){
 let petal=document.createElementNS("http://www.w3.org/2000/svg","svg");
@@ -255,13 +262,11 @@ document.body.appendChild(petal);
 <!-- Opening -->
 <div id="opening">
 <img src="logo.png" class="opening-logo">
-<div class="sub-text">27 · APRIL · 2026</div>
 <button class="open-btn" onclick="openInvite()">Open Invitation</button>
 </div>
 
 <!-- Page 1 -->
 <section class="section soft-red">
-
 <div class="invite-line">
 You are cordially invited to celebrate the wedding of
 </div>
@@ -278,14 +283,12 @@ You are cordially invited to celebrate the wedding of
 WE WOULD LIKE TO INVITE YOU TO CELEBRATE WITH US THE MOST SPECIAL DAY OF OUR LIVES.
 IT WOULD BE AN HONOR TO HAVE YOU PRESENT AT THIS IMPORTANT MOMENT.
 </div>
-
 </section>
 
 <div class="fade-divider"></div>
 
 <!-- Page 2 -->
 <section class="section date-page">
-
 <div class="date-big">APRIL 27, 2026</div>
 <div class="time-text">10:00 AM</div>
 
@@ -303,7 +306,6 @@ Cherthala near Manorama Junction
 <a class="map-btn" href="https://maps.app.goo.gl/mobFw1b7dZiGS3Qf7" target="_blank">
 VIEW LOCATION
 </a>
-
 </section>
 
 <footer>
@@ -311,15 +313,10 @@ With love and blessings,<br>
 We look forward to celebrating together.
 </footer>
 
-<audio id="bgMusic" loop>
-<source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_44f7b1c31c.mp3?filename=wedding-love-11085.mp3" type="audio/mpeg">
-</audio>
-
 <script>
 function openInvite(){
 document.getElementById("opening").style.opacity="0";
 setTimeout(()=>{document.getElementById("opening").style.display="none";},1200);
-document.getElementById("bgMusic").play();
 }
 
 const weddingDate = new Date("April 27, 2026 10:00:00").getTime();
