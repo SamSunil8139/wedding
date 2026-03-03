@@ -135,7 +135,7 @@ line-height:1.8;
 opacity:0.9;
 }
 
-/* ================= PHOTO SECTION (CLEAN CUT) ================= */
+/* ================= PHOTO SECTION ================= */
 
 .photo-section{
 position:relative;
@@ -146,9 +146,17 @@ align-items:center;
 text-align:center;
 color:white;
 background:url('couple.JPG') center/cover no-repeat;
+overflow:hidden;
 }
 
-/* Poem */
+/* Subtle dark overlay for readability */
+.photo-section::before{
+content:"";
+position:absolute;
+inset:0;
+background:rgba(0,0,0,0.35);
+}
+
 .photo-caption{
 position:relative;
 z-index:2;
@@ -158,6 +166,7 @@ letter-spacing:1.5px;
 max-width:800px;
 padding:20px;
 line-height:1.6;
+text-shadow: 0 4px 15px rgba(0,0,0,0.5);
 }
 
 .poem-line{
@@ -363,16 +372,4 @@ const now = new Date().getTime();
 const distance = weddingDate - now;
 const days = Math.floor(distance / (1000*60*60*24));
 const hours = Math.floor((distance % (1000*60*60*24))/(1000*60*60));
-const minutes = Math.floor((distance % (1000*60*60))/(1000*60));
-const seconds = Math.floor((distance % (1000*60))/1000);
-document.getElementById("countdown").innerHTML = `
-<div class="time-box"><span>${days}</span>DAYS</div>
-<div class="time-box"><span>${hours}</span>HRS</div>
-<div class="time-box"><span>${minutes}</span>MIN</div>
-<div class="time-box"><span>${seconds}</span>SEC</div>
-`;
-},1000);
-</script>
-
-</body>
-</html>
+const minutes = Math.floor((distance % (1000*60*60))/(1000
