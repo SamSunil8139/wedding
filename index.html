@@ -5,124 +5,165 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Aswathi & Sam | Wedding</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Poppins:wght@300;400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
 
 <style>
 *{
 margin:0;
 padding:0;
 box-sizing:border-box;
-font-family:'Poppins',sans-serif;
-scroll-behavior:smooth;
 }
 
 body{
-background:#fff9f6;
-color:#333;
+font-family:'Montserrat',sans-serif;
+background:#f5f1ea;
+color:#222;
 overflow-x:hidden;
 }
 
-/* Opening Screen */
+/* OPEN SCREEN */
 
 #opening{
 position:fixed;
 width:100%;
 height:100vh;
-background:linear-gradient(135deg,#f9e6e3,#fceff3);
+background:linear-gradient(135deg,#f5f1ea,#e9e2d8);
 display:flex;
+flex-direction:column;
 justify-content:center;
 align-items:center;
-flex-direction:column;
 z-index:1000;
 transition:1s ease;
 }
 
 #opening h1{
 font-family:'Playfair Display',serif;
-font-size:28px;
-margin-bottom:20px;
+font-size:32px;
+letter-spacing:2px;
+margin-bottom:30px;
+opacity:0;
+animation:fadeIn 2s forwards;
 }
 
 .open-btn{
-padding:12px 30px;
+padding:14px 40px;
 border:none;
-background:#e8b4b8;
-color:white;
-font-size:16px;
-border-radius:30px;
+background:linear-gradient(45deg,#c6a75e,#e5c97a);
+color:#fff;
+font-size:15px;
+letter-spacing:1px;
+border-radius:50px;
 cursor:pointer;
 transition:.3s;
+box-shadow:0 5px 20px rgba(0,0,0,0.15);
 }
 
 .open-btn:hover{
-background:#d98f94;
+transform:scale(1.05);
 }
 
-/* Main Content */
+/* HERO */
 
-.section{
-min-height:100vh;
+.hero{
+height:100vh;
 display:flex;
 flex-direction:column;
 justify-content:center;
 align-items:center;
-padding:40px 20px;
 text-align:center;
-position:relative;
+padding:20px;
 }
 
-h2{
+.names{
 font-family:'Playfair Display',serif;
-font-size:32px;
-margin-bottom:15px;
+font-size:38px;
+letter-spacing:2px;
+animation:fadeUp 2s ease forwards;
+opacity:0;
+}
+
+.and{
+margin:20px 0;
+font-size:18px;
+letter-spacing:4px;
+color:#c6a75e;
 }
 
 .quote{
+margin-top:30px;
 font-style:italic;
-margin-bottom:25px;
-color:#a66;
+max-width:500px;
+color:#777;
 }
 
+/* DETAILS CARD */
+
 .details{
-margin-top:20px;
-line-height:1.8;
+background:rgba(255,255,255,0.6);
+backdrop-filter:blur(10px);
+padding:40px;
+margin:50px 20px;
+border-radius:20px;
+box-shadow:0 10px 40px rgba(0,0,0,0.08);
+text-align:center;
+}
+
+.details h2{
+font-family:'Playfair Display',serif;
+margin-bottom:20px;
 }
 
 .countdown{
-font-size:20px;
-margin-top:20px;
-color:#c07;
+display:flex;
+justify-content:center;
+gap:15px;
+margin-top:30px;
+flex-wrap:wrap;
+}
+
+.time-box{
+background:#fff;
+padding:15px 20px;
+border-radius:12px;
+box-shadow:0 5px 15px rgba(0,0,0,0.08);
+}
+
+.time-box span{
+display:block;
+font-size:22px;
+font-weight:600;
+color:#c6a75e;
 }
 
 .map-btn{
-margin-top:25px;
-padding:12px 25px;
-border-radius:30px;
-background:#e8b4b8;
-color:white;
-text-decoration:none;
+margin-top:30px;
 display:inline-block;
+padding:12px 30px;
+background:linear-gradient(45deg,#c6a75e,#e5c97a);
+color:#fff;
+border-radius:30px;
+text-decoration:none;
 transition:.3s;
 }
 
 .map-btn:hover{
-background:#d98f94;
+transform:scale(1.05);
 }
 
-/* Floral floating animation */
+/* ANIMATIONS */
 
-.flower{
-position:absolute;
-width:25px;
-opacity:0.6;
-animation:float 10s linear infinite;
+@keyframes fadeIn{
+to{opacity:1;}
 }
 
-@keyframes float{
-0%{transform:translateY(100vh) rotate(0deg);}
-100%{transform:translateY(-10vh) rotate(360deg);}
+@keyframes fadeUp{
+from{opacity:0; transform:translateY(30px);}
+to{opacity:1; transform:translateY(0);}
 }
 
+@media(max-width:768px){
+.names{font-size:28px;}
+}
 </style>
 </head>
 
@@ -130,46 +171,47 @@ animation:float 10s linear infinite;
 
 <div id="opening">
 <h1>You're Invited</h1>
-<button class="open-btn" onclick="openInvite()">Tap to Open</button>
+<button class="open-btn" onclick="openInvite()">Open Invitation</button>
 </div>
 
-<div class="section">
+<section class="hero">
+<div class="names">Aswathi Ashokan</div>
+<div class="and">&</div>
+<div class="names">Sam Sunil</div>
 
-<h2>Aswathi Ashokan</h2>
-<p>daughter of<br>
-Ashokan U P & Mohini P K</p>
-
-<h2 style="margin-top:30px;">&</h2>
-
-<h2>Sam Sunil</h2>
-<p>son of<br>
-Sunil K Samuel & Thresiamma K A</p>
-
-<p class="quote">"Two souls with but a single thought, two hearts that beat as one."</p>
+<p class="quote">Two souls, one journey, a lifetime together.</p>
+</section>
 
 <div class="details">
+<h2>Wedding Ceremony</h2>
 April 27, 2026<br>
 10:00 AM<br>
 VTAM Auditorium<br>
 Cherthala near Manorama Junction
-</div>
 
 <div class="countdown" id="countdown"></div>
 
 <a class="map-btn" href="https://maps.app.goo.gl/mobFw1b7dZiGS3Qf7" target="_blank">
-View Location on Google Maps
+View Location
 </a>
 
+<p style="margin-top:30px;font-size:14px;color:#666;">
+Bride: Ashokan U P & Mohini P K<br>
+Groom: Sunil K Samuel & Thresiamma K A
+</p>
 </div>
+
+<audio id="bgMusic" loop>
+<source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_44f7b1c31c.mp3?filename=wedding-love-11085.mp3" type="audio/mpeg">
+</audio>
 
 <script>
 
 function openInvite(){
 document.getElementById("opening").style.opacity="0";
 setTimeout(()=>{document.getElementById("opening").style.display="none";},1000);
+document.getElementById("bgMusic").play();
 }
-
-// Countdown
 
 const weddingDate = new Date("April 27, 2026 10:00:00").getTime();
 
@@ -177,25 +219,18 @@ setInterval(function(){
 const now = new Date().getTime();
 const distance = weddingDate - now;
 
-const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+const days = Math.floor(distance / (1000*60*60*24));
+const hours = Math.floor((distance % (1000*60*60*24))/(1000*60*60));
+const minutes = Math.floor((distance % (1000*60*60))/(1000*60));
+const seconds = Math.floor((distance % (1000*60))/1000);
 
-document.getElementById("countdown").innerHTML =
-days + " Days " + hours + " Hours " + minutes + " Minutes Remaining";
-
+document.getElementById("countdown").innerHTML = `
+<div class="time-box"><span>${days}</span>Days</div>
+<div class="time-box"><span>${hours}</span>Hours</div>
+<div class="time-box"><span>${minutes}</span>Minutes</div>
+<div class="time-box"><span>${seconds}</span>Seconds</div>
+`;
 },1000);
-
-// Floral floating elements
-
-for(let i=0;i<15;i++){
-let flower=document.createElement("div");
-flower.className="flower";
-flower.style.left=Math.random()*100+"vw";
-flower.style.animationDuration=(5+Math.random()*5)+"s";
-flower.innerHTML="🌸";
-document.body.appendChild(flower);
-}
 
 </script>
 
