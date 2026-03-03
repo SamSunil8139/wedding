@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Aswathi & Sam | Wedding</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;700&family=Raleway:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;700&family=Raleway:wght@300;400;500;600&display=swap" rel="stylesheet">
 
 <style>
 *{margin:0;padding:0;box-sizing:border-box;}
@@ -52,14 +52,14 @@ transition:1.2s ease;
 overflow:hidden;
 }
 
-/* Soft Vignette */
+/* Soft Elegant Vignette */
 #opening::after{
 content:"";
 position:absolute;
 inset:0;
 background:radial-gradient(circle at center,
-rgba(0,0,0,0) 55%,
-rgba(0,0,0,0.30) 100%);
+rgba(0,0,0,0) 60%,
+rgba(0,0,0,0.28) 100%);
 pointer-events:none;
 }
 
@@ -173,6 +173,7 @@ margin-bottom:25px;
 letter-spacing:4px;
 font-size:14px;
 margin-bottom:15px;
+font-weight:600;
 }
 
 .countdown{
@@ -200,7 +201,15 @@ font-weight:600;
 .until-text{
 letter-spacing:3px;
 font-size:13px;
-margin-bottom:30px;
+margin-bottom:25px;
+font-weight:600;
+}
+
+.celebration-text{
+letter-spacing:3px;
+font-size:13px;
+margin-bottom:20px;
+font-weight:600;
 }
 
 .location-text{
@@ -255,7 +264,7 @@ padding-top:22vh;
 
 <body>
 
-<!-- Opening -->
+<!-- OPENING -->
 <div id="opening">
 <img src="logo.png" class="opening-logo">
 <div class="opening-names">Sam & Aswathi</div>
@@ -263,7 +272,7 @@ padding-top:22vh;
 <button class="open-btn" onclick="openInvite()">Open Invitation</button>
 </div>
 
-<!-- Page 1 -->
+<!-- PAGE 1 -->
 <section class="section soft-red">
 <div class="invite-line">
 You are cordially invited to celebrate the wedding of
@@ -285,14 +294,19 @@ IT WOULD BE AN HONOR TO HAVE YOU PRESENT AT THIS IMPORTANT MOMENT.
 
 <div class="fade-divider"></div>
 
-<!-- Page 2 -->
+<!-- PAGE 2 -->
 <section class="section date-page">
+
 <div class="date-big">APRIL 27, 2026</div>
 <div class="time-text">10:00 AM</div>
 
 <div class="countdown-title">COUNTDOWN</div>
 <div class="countdown" id="countdown"></div>
 <div class="until-text">UNTIL THE BIG DAY</div>
+
+<div class="celebration-text">
+THE CELEBRATION WILL TAKE PLACE AT
+</div>
 
 <div class="location-text">
 VTAM Auditorium<br>
@@ -304,6 +318,7 @@ Cherthala near Manorama Junction
 <a class="map-btn" href="https://maps.app.goo.gl/mobFw1b7dZiGS3Qf7" target="_blank">
 VIEW LOCATION
 </a>
+
 </section>
 
 <script>
