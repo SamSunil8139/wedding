@@ -29,7 +29,7 @@ text-align:center;
 padding:20px;
 }
 
-/* Softer Romantic Red */
+/* Softer Romantic Red Gradient */
 .soft-red{
 background:linear-gradient(135deg,#7a1f2b,#8e2c3a,#6d1a25);
 }
@@ -97,7 +97,7 @@ opacity:0.8;
 font-family:'Cormorant Garamond',serif;
 font-size:52px;
 letter-spacing:3px;
-margin-bottom:25px;
+margin-bottom:20px;
 }
 
 .invite-bottom{
@@ -109,7 +109,7 @@ line-height:1.8;
 opacity:0.9;
 }
 
-/* Fade divider */
+/* Fade Divider */
 .fade-divider{
 height:150px;
 background:linear-gradient(to bottom, rgba(122,31,43,1), white);
@@ -175,11 +175,13 @@ line-height:1.8;
 margin-bottom:25px;
 }
 
-/* Palace SVG */
-.palace{
-width:120px;
-opacity:0.8;
-margin-bottom:25px;
+/* Palace Image */
+.palace-img{
+width:320px;
+max-width:80%;
+margin:25px 0;
+filter: invert(17%) sepia(44%) saturate(1300%) hue-rotate(330deg) brightness(85%) contrast(95%);
+opacity:0.85;
 }
 
 /* Button */
@@ -278,9 +280,7 @@ IT WOULD BE AN HONOR TO HAVE YOU PRESENT AT THIS IMPORTANT MOMENT.
 <div class="time-text">10:00 AM</div>
 
 <div class="countdown-title">COUNTDOWN</div>
-
 <div class="countdown" id="countdown"></div>
-
 <div class="until-text">UNTIL THE BIG DAY</div>
 
 <div class="location-text">
@@ -288,12 +288,8 @@ VTAM Auditorium<br>
 Cherthala near Manorama Junction
 </div>
 
-<!-- Palace SVG -->
-<svg class="palace" viewBox="0 0 64 64">
-<path fill="#7a1f2b" d="M8 28h48v20H8z"/>
-<path fill="#7a1f2b" d="M4 28l28-18 28 18z"/>
-<circle cx="32" cy="20" r="3" fill="white"/>
-</svg>
+<!-- Palace Image -->
+<img src="palace.png" class="palace-img">
 
 <a class="map-btn" href="https://maps.app.goo.gl/mobFw1b7dZiGS3Qf7" target="_blank">
 VIEW LOCATION
