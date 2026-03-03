@@ -63,12 +63,12 @@ rgba(0,0,0,0.28) 100%);
 pointer-events:none;
 }
 
-/* Logo */
+/* 🔥 Improved Logo Balance */
 .opening-logo{
-width:440px;
+width:520px;              /* Increased size */
 max-width:95%;
-margin-bottom:20px;
-margin-top:-40px;
+margin-bottom:25px;       /* Better spacing below */
+margin-top:-10px;         /* Reduced negative shift */
 animation:logoZoom 14s ease-in-out infinite alternate;
 }
 
@@ -79,15 +79,14 @@ to{transform:scale(1.04);}
 
 .opening-names{
 font-family:'Cormorant Garamond',serif;
-font-size:32px;
+font-size:34px;           /* Slightly increased */
 letter-spacing:4px;
-margin-top:10px;
-margin-bottom:8px;
+margin-bottom:6px;
 }
 
 .opening-date{
 letter-spacing:3px;
-font-size:14px;
+font-size:15px;
 opacity:0.9;
 margin-bottom:35px;
 }
@@ -239,19 +238,20 @@ transition:0.3s;
 background:#5a141d;
 }
 
-/* Mobile Fix */
+/* Mobile Optimization */
 @media(max-width:768px){
 
 .names{font-size:32px;}
 .date-big{font-size:36px;}
 
 .opening-logo{
-width:300px;
-margin-top:-60px;
+width:360px;         /* Balanced for mobile */
+margin-top:-30px;
+margin-bottom:20px;
 }
 
 .opening-names{
-font-size:24px;
+font-size:26px;
 }
 
 #opening{
