@@ -13,43 +13,56 @@ body{
 font-family:'Montserrat',sans-serif;
 background:#f5f1ea;
 overflow:hidden;
+text-align:center;
 }
 
-/* CURTAIN */
-#curtain{
+/* INTRO SCREEN */
+
+#intro{
 position:fixed;
 width:100%;
 height:100vh;
 display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+background:linear-gradient(135deg,#f5f1ea,#e8e1d6);
 z-index:1000;
+transition:1s ease;
 }
 
-.panel{
-flex:1;
-background:linear-gradient(90deg,#7b1e1e,#a83232);
-transition:1.8s ease;
+#intro h1{
+font-family:'Playfair Display',serif;
+font-size:30px;
+margin-bottom:25px;
 }
 
-#curtain.open .left{transform:translateX(-100%);}
-#curtain.open .right{transform:translateX(100%);}
+.open-btn{
+padding:14px 40px;
+background:linear-gradient(45deg,#c6a75e,#e5c97a);
+border:none;
+border-radius:40px;
+color:#fff;
+cursor:pointer;
+font-size:14px;
+}
 
 /* SCRATCH SCREEN */
-#scratchScreen{
+
+#scratchSection{
+display:none;
 position:fixed;
 width:100%;
 height:100vh;
 background:#f5f1ea;
-display:flex;
 justify-content:center;
 align-items:center;
 flex-direction:column;
-z-index:500;
 }
 
-#revealText{
+#dateReveal{
 font-family:'Playfair Display',serif;
 font-size:32px;
-text-align:center;
 opacity:0;
 transition:1s ease;
 z-index:1;
@@ -57,15 +70,14 @@ z-index:1;
 
 canvas{
 position:absolute;
-top:0;
-left:0;
 }
 
 /* FLOWERS */
+
 .flower{
 position:fixed;
 top:-20px;
-font-size:24px;
+font-size:22px;
 animation:fall linear forwards;
 }
 
@@ -74,12 +86,12 @@ to{transform:translateY(110vh) rotate(360deg);}
 }
 
 /* MAIN CONTENT */
+
 #mainContent{
 display:none;
-height:100vh;
-overflow-y:auto;
-text-align:center;
-padding:60px 20px;
+padding:80px 20px;
+min-height:100vh;
+background:#f5f1ea;
 }
 
 .names{
@@ -88,13 +100,20 @@ font-size:32px;
 margin:15px 0;
 }
 
+.quote{
+margin:20px auto;
+max-width:500px;
+font-style:italic;
+color:#777;
+}
+
 .details{
 margin-top:30px;
 line-height:1.8;
 }
 
 .map-btn{
-margin-top:25px;
+margin-top:30px;
 display:inline-block;
 padding:12px 30px;
 background:#c6a75e;
@@ -108,23 +127,29 @@ text-decoration:none;
 
 <body>
 
-<div id="curtain">
-<div class="panel left"></div>
-<div class="panel right"></div>
+<!-- INTRO -->
+<div id="intro">
+<h1>You're Invited</h1>
+<button class="open-btn" onclick="startExperience()">Open Invitation</button>
 </div>
 
-<div id="scratchScreen">
-<div id="revealText">
-April 27, 2026<br>
-10:00 AM
+<!-- SCRATCH -->
+<div id="scratchSection">
+<div id="dateReveal">
+April 27, 2026<br>10:00 AM
 </div>
 <canvas id="scratchCanvas"></canvas>
 </div>
 
+<!-- MAIN CONTENT -->
 <div id="mainContent">
 <div class="names">Aswathi Ashokan</div>
 <div>&</div>
 <div class="names">Sam Sunil</div>
+
+<p class="quote">
+Two souls, one journey, a lifetime together.
+</p>
 
 <div class="details">
 VTAM Auditorium<br>
@@ -145,71 +170,71 @@ View Location
 
 <script>
 
-/* Curtain open */
-setTimeout(()=>{
-document.getElementById("curtain").classList.add("open");
-},1200);
+function startExperience(){
+document.getElementById("intro").style.display="none";
+document.getElementById("scratchSection").style.display="flex";
+document.getElementById("music").play();
+setupScratch();
+}
 
-/* Scratch Setup */
+function setupScratch(){
 const canvas = document.getElementById("scratchCanvas");
 const ctx = canvas.getContext("2d");
 
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
 
-ctx.fillStyle = "#c6a75e";
+ctx.fillStyle="#c6a75e";
 ctx.fillRect(0,0,canvas.width,canvas.height);
 
-ctx.globalCompositeOperation = "destination-out";
+ctx.globalCompositeOperation="destination-out";
 
-let isDrawing = false;
+let drawing=false;
 
-function getPosition(e){
+function getPos(e){
 if(e.touches){
-return {x:e.touches[0].clientX, y:e.touches[0].clientY};
+return {x:e.touches[0].clientX,y:e.touches[0].clientY};
 }
-return {x:e.clientX, y:e.clientY};
+return {x:e.clientX,y:e.clientY};
 }
 
 function scratch(e){
-if(!isDrawing) return;
-const pos = getPosition(e);
+if(!drawing) return;
+const pos=getPos(e);
 ctx.beginPath();
 ctx.arc(pos.x,pos.y,35,0,Math.PI*2);
 ctx.fill();
 checkReveal();
 }
 
-canvas.addEventListener("mousedown",()=>isDrawing=true);
-canvas.addEventListener("mouseup",()=>isDrawing=false);
+canvas.addEventListener("mousedown",()=>drawing=true);
+canvas.addEventListener("mouseup",()=>drawing=false);
 canvas.addEventListener("mousemove",scratch);
 
-canvas.addEventListener("touchstart",()=>isDrawing=true);
-canvas.addEventListener("touchend",()=>isDrawing=false);
+canvas.addEventListener("touchstart",()=>drawing=true);
+canvas.addEventListener("touchend",()=>drawing=false);
 canvas.addEventListener("touchmove",scratch);
 
-/* Reveal Logic */
 function checkReveal(){
-const pixels = ctx.getImageData(0,0,canvas.width,canvas.height);
-let cleared = 0;
+const pixels=ctx.getImageData(0,0,canvas.width,canvas.height);
+let cleared=0;
 
 for(let i=0;i<pixels.data.length;i+=4){
-if(pixels.data[i+3] === 0) cleared++;
+if(pixels.data[i+3]===0) cleared++;
 }
 
-if(cleared > pixels.data.length * 0.25){
-document.getElementById("revealText").style.opacity="1";
+if(cleared > pixels.data.length*0.25){
+document.getElementById("dateReveal").style.opacity="1";
 flowerShower();
 setTimeout(()=>{
-document.getElementById("scratchScreen").style.display="none";
+document.getElementById("scratchSection").style.display="none";
 document.getElementById("mainContent").style.display="block";
 document.body.style.overflow="auto";
-document.getElementById("music").play();
 },2500);
 }
 }
+}
 
-/* Flower Shower */
 function flowerShower(){
 for(let i=0;i<40;i++){
 let flower=document.createElement("div");
