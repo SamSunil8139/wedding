@@ -34,18 +34,10 @@ position:relative;
 background:linear-gradient(135deg,#7a1f2b,#8e2c3a,#6d1a25);
 }
 
-/* ✨ VIGNETTE EFFECT FOR PAGE 1 */
-.soft-red::after{
-content:"";
-position:absolute;
-inset:0;
-background:radial-gradient(circle at center,
-rgba(0,0,0,0) 40%,
-rgba(0,0,0,0.35) 100%);
-pointer-events:none;
-}
+/* ========================= */
+/* OPENING SCREEN */
+/* ========================= */
 
-/* Opening */
 #opening{
 position:fixed;
 width:100%;
@@ -57,9 +49,20 @@ justify-content:center;
 align-items:center;
 z-index:1000;
 transition:1.2s ease;
+position:relative;
 }
 
-/* Logo */
+/* Vignette ONLY on opening */
+#opening::after{
+content:"";
+position:absolute;
+inset:0;
+background:radial-gradient(circle at center,
+rgba(0,0,0,0) 40%,
+rgba(0,0,0,0.45) 100%);
+pointer-events:none;
+}
+
 .opening-logo{
 width:440px;
 max-width:95%;
@@ -104,7 +107,10 @@ background:white;
 color:#7a1f2b;
 }
 
-/* Page 1 Text */
+/* ========================= */
+/* PAGE 1 */
+/* ========================= */
+
 .invite-line{
 letter-spacing:3px;
 font-size:13px;
@@ -141,7 +147,10 @@ height:150px;
 background:linear-gradient(to bottom, rgba(122,31,43,1), white);
 }
 
-/* Page 2 */
+/* ========================= */
+/* PAGE 2 */
+/* ========================= */
+
 .date-page{
 background:white;
 color:#7a1f2b;
@@ -149,21 +158,21 @@ position:relative;
 overflow:hidden;
 }
 
-/* 🌸 Floral Decorations */
+/* Floral Decorations */
 .floral{
 position:absolute;
-width:200px;
+width:180px;
 opacity:0.08;
 }
 
 .floral-top-left{
-top:-20px;
-left:-20px;
+top:-30px;
+left:-30px;
 }
 
 .floral-bottom-right{
-bottom:-20px;
-right:-20px;
+bottom:-30px;
+right:-30px;
 transform:rotate(180deg);
 }
 
@@ -240,15 +249,7 @@ transition:0.3s;
 background:#5a141d;
 }
 
-/* Footer */
-footer{
-padding:60px 20px;
-text-align:center;
-background:white;
-color:#7a1f2b;
-font-size:14px;
-}
-
+/* Mobile */
 @media(max-width:768px){
 
 .names{font-size:32px;}
@@ -269,7 +270,7 @@ padding-top:22vh;
 }
 
 .floral{
-width:140px;
+width:120px;
 }
 }
 </style>
@@ -310,9 +311,14 @@ IT WOULD BE AN HONOR TO HAVE YOU PRESENT AT THIS IMPORTANT MOMENT.
 <!-- Page 2 -->
 <section class="section date-page">
 
-<!-- Floral Corners -->
-<img src="https://www.svgrepo.com/show/510050/floral.svg" class="floral floral-top-left">
-<img src="https://www.svgrepo.com/show/510050/floral.svg" class="floral floral-bottom-right">
+<!-- Floral SVG Inline -->
+<svg class="floral floral-top-left" viewBox="0 0 200 200">
+<path fill="#7a1f2b" d="M100 10 C120 40, 180 40, 190 100 C160 80, 140 120, 100 190 C60 120, 40 80, 10 100 C20 40, 80 40, 100 10Z"/>
+</svg>
+
+<svg class="floral floral-bottom-right" viewBox="0 0 200 200">
+<path fill="#7a1f2b" d="M100 10 C120 40, 180 40, 190 100 C160 80, 140 120, 100 190 C60 120, 40 80, 10 100 C20 40, 80 40, 100 10Z"/>
+</svg>
 
 <div class="date-big">APRIL 27, 2026</div>
 <div class="time-text">10:00 AM</div>
@@ -333,11 +339,6 @@ VIEW LOCATION
 </a>
 
 </section>
-
-<footer>
-With love and blessings,<br>
-We look forward to celebrating together.
-</footer>
 
 <script>
 function openInvite(){
