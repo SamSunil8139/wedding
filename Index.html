@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aswathi & Sam | Wedding</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Poppins:wght@300;400&display=swap" rel="stylesheet">
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+scroll-behavior:smooth;
+}
+
+body{
+background:#fff9f6;
+color:#333;
+overflow-x:hidden;
+}
+
+/* Opening Screen */
+
+#opening{
+position:fixed;
+width:100%;
+height:100vh;
+background:linear-gradient(135deg,#f9e6e3,#fceff3);
+display:flex;
+justify-content:center;
+align-items:center;
+flex-direction:column;
+z-index:1000;
+transition:1s ease;
+}
+
+#opening h1{
+font-family:'Playfair Display',serif;
+font-size:28px;
+margin-bottom:20px;
+}
+
+.open-btn{
+padding:12px 30px;
+border:none;
+background:#e8b4b8;
+color:white;
+font-size:16px;
+border-radius:30px;
+cursor:pointer;
+transition:.3s;
+}
+
+.open-btn:hover{
+background:#d98f94;
+}
+
+/* Main Content */
+
+.section{
+min-height:100vh;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+padding:40px 20px;
+text-align:center;
+position:relative;
+}
+
+h2{
+font-family:'Playfair Display',serif;
+font-size:32px;
+margin-bottom:15px;
+}
+
+.quote{
+font-style:italic;
+margin-bottom:25px;
+color:#a66;
+}
+
+.details{
+margin-top:20px;
+line-height:1.8;
+}
+
+.countdown{
+font-size:20px;
+margin-top:20px;
+color:#c07;
+}
+
+.map-btn{
+margin-top:25px;
+padding:12px 25px;
+border-radius:30px;
+background:#e8b4b8;
+color:white;
+text-decoration:none;
+display:inline-block;
+transition:.3s;
+}
+
+.map-btn:hover{
+background:#d98f94;
+}
+
+/* Floral floating animation */
+
+.flower{
+position:absolute;
+width:25px;
+opacity:0.6;
+animation:float 10s linear infinite;
+}
+
+@keyframes float{
+0%{transform:translateY(100vh) rotate(0deg);}
+100%{transform:translateY(-10vh) rotate(360deg);}
+}
+
+</style>
+</head>
+
+<body>
+
+<div id="opening">
+<h1>You're Invited</h1>
+<button class="open-btn" onclick="openInvite()">Tap to Open</button>
+</div>
+
+<div class="section">
+
+<h2>Aswathi Ashokan</h2>
+<p>daughter of<br>
+Ashokan U P & Mohini P K</p>
+
+<h2 style="margin-top:30px;">&</h2>
+
+<h2>Sam Sunil</h2>
+<p>son of<br>
+Sunil K Samuel & Thresiamma K A</p>
+
+<p class="quote">"Two souls with but a single thought, two hearts that beat as one."</p>
+
+<div class="details">
+April 27, 2026<br>
+10:00 AM<br>
+VTAM Auditorium<br>
+Cherthala near Manorama Junction
+</div>
+
+<div class="countdown" id="countdown"></div>
+
+<a class="map-btn" href="https://maps.app.goo.gl/mobFw1b7dZiGS3Qf7" target="_blank">
+View Location on Google Maps
+</a>
+
+</div>
+
+<script>
+
+function openInvite(){
+document.getElementById("opening").style.opacity="0";
+setTimeout(()=>{document.getElementById("opening").style.display="none";},1000);
+}
+
+// Countdown
+
+const weddingDate = new Date("April 27, 2026 10:00:00").getTime();
+
+setInterval(function(){
+const now = new Date().getTime();
+const distance = weddingDate - now;
+
+const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+
+document.getElementById("countdown").innerHTML =
+days + " Days " + hours + " Hours " + minutes + " Minutes Remaining";
+
+},1000);
+
+// Floral floating elements
+
+for(let i=0;i<15;i++){
+let flower=document.createElement("div");
+flower.className="flower";
+flower.style.left=Math.random()*100+"vw";
+flower.style.animationDuration=(5+Math.random()*5)+"s";
+flower.innerHTML="🌸";
+document.body.appendChild(flower);
+}
+
+</script>
+
+</body>
+</html>
