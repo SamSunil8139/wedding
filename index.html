@@ -17,7 +17,22 @@ overflow-x:hidden;
 scroll-behavior:smooth;
 }
 
-/* OPEN SCREEN */
+/* GOLD PARTICLES */
+.particle{
+position:fixed;
+width:4px;
+height:4px;
+background:gold;
+border-radius:50%;
+opacity:0.15;
+animation:float 15s linear infinite;
+}
+@keyframes float{
+0%{transform:translateY(100vh);}
+100%{transform:translateY(-10vh);}
+}
+
+/* OPENING */
 #opening{
 position:fixed;
 width:100%;
@@ -33,10 +48,9 @@ transition:1s ease;
 
 #opening h1{
 font-family:'Playfair Display',serif;
-font-size:32px;
-letter-spacing:2px;
+font-size:34px;
+letter-spacing:3px;
 margin-bottom:30px;
-animation:fadeIn 2s forwards;
 }
 
 .open-btn{
@@ -44,7 +58,7 @@ padding:14px 40px;
 border:none;
 background:linear-gradient(45deg,#c6a75e,#e5c97a);
 color:#fff;
-font-size:15px;
+font-size:14px;
 border-radius:50px;
 cursor:pointer;
 box-shadow:0 5px 20px rgba(0,0,0,0.15);
@@ -52,23 +66,23 @@ box-shadow:0 5px 20px rgba(0,0,0,0.15);
 
 /* SECTIONS */
 section{
-padding:100px 20px;
+padding:120px 20px;
 text-align:center;
 max-width:900px;
 margin:auto;
-}
-
-h2{
-font-family:'Playfair Display',serif;
-font-size:32px;
-margin-bottom:20px;
+position:relative;
 }
 
 .gold-line{
 width:80px;
 height:3px;
 background:linear-gradient(45deg,#c6a75e,#e5c97a);
-margin:20px auto 40px auto;
+margin:25px auto 50px auto;
+animation:glow 3s ease-in-out infinite alternate;
+}
+@keyframes glow{
+from{opacity:0.6;}
+to{opacity:1;}
 }
 
 /* HERO */
@@ -80,31 +94,57 @@ justify-content:center;
 align-items:center;
 }
 
+.invite-line{
+font-size:13px;
+letter-spacing:3px;
+text-transform:uppercase;
+color:#8c7a4f;
+margin-bottom:35px;
+max-width:700px;
+line-height:1.8;
+}
+
 .names{
 font-family:'Playfair Display',serif;
-font-size:40px;
+font-size:42px;
 letter-spacing:2px;
 }
 
 .and{
-margin:20px 0;
+margin:25px 0;
 color:#c6a75e;
 letter-spacing:4px;
 }
 
-.quote{
-margin-top:30px;
-font-style:italic;
-max-width:600px;
-color:#777;
+.invite-bottom{
+margin-top:40px;
+max-width:650px;
+font-size:13px;
+letter-spacing:2px;
+text-transform:uppercase;
+line-height:1.9;
+color:#555;
 }
 
-/* DETAILS */
+/* FLORAL SIDE VECTORS */
+.floral-left,
+.floral-right{
+position:absolute;
+top:50%;
+transform:translateY(-50%);
+font-size:120px;
+color:#c6a75e;
+opacity:0.06;
+}
+.floral-left{ left:-40px; }
+.floral-right{ right:-40px; }
+
+/* DETAILS CARD */
 .details-card{
 background:white;
-padding:50px 30px;
-border-radius:20px;
-box-shadow:0 10px 40px rgba(0,0,0,0.08);
+padding:60px 40px;
+border-radius:25px;
+box-shadow:0 15px 50px rgba(0,0,0,0.08);
 }
 
 .countdown{
@@ -117,8 +157,8 @@ flex-wrap:wrap;
 
 .time-box{
 background:#f5f1ea;
-padding:15px 20px;
-border-radius:12px;
+padding:18px 25px;
+border-radius:15px;
 }
 
 .time-box span{
@@ -129,20 +169,40 @@ color:#c6a75e;
 }
 
 .map-btn{
-margin-top:30px;
+margin-top:35px;
 display:inline-block;
-padding:12px 30px;
+padding:14px 35px;
 background:linear-gradient(45deg,#c6a75e,#e5c97a);
 color:#fff;
 border-radius:30px;
 text-decoration:none;
+transition:0.3s;
+}
+.map-btn:hover{
+transform:scale(1.05);
+}
+
+/* PARALLAX */
+.parallax{
+height:300px;
+background:linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.3)),
+url('https://images.unsplash.com/photo-1529634806980-2f3d6f0d52b5?auto=format&fit=crop&w=1200&q=60');
+background-attachment:fixed;
+background-position:center;
+background-size:cover;
+display:flex;
+align-items:center;
+justify-content:center;
+color:white;
+font-family:'Playfair Display',serif;
+font-size:28px;
+letter-spacing:2px;
 }
 
 /* TIMELINE */
 .timeline-item{
-margin:30px 0;
+margin:35px 0;
 }
-
 .timeline-item h4{
 color:#c6a75e;
 margin-bottom:8px;
@@ -150,19 +210,18 @@ margin-bottom:8px;
 
 /* FOOTER */
 footer{
-padding:60px 20px;
+padding:70px 20px;
 text-align:center;
 background:#e9e2d8;
 font-size:14px;
 }
 
-/* ANIMATION */
+/* Scroll Animation */
 .fade-up{
 opacity:0;
-transform:translateY(30px);
-transition:1s ease;
+transform:translateY(40px);
+transition:1.2s ease;
 }
-
 .fade-up.show{
 opacity:1;
 transform:translateY(0);
@@ -170,32 +229,58 @@ transform:translateY(0);
 
 @media(max-width:768px){
 .names{font-size:28px;}
+.floral-left,.floral-right{display:none;}
 }
 </style>
 </head>
 
 <body>
 
+<!-- GOLD PARTICLES -->
+<script>
+for(let i=0;i<25;i++){
+let p=document.createElement("div");
+p.className="particle";
+p.style.left=Math.random()*100+"vw";
+p.style.animationDuration=(10+Math.random()*10)+"s";
+document.body.appendChild(p);
+}
+</script>
+
+<!-- OPENING -->
 <div id="opening">
 <h1>You're Invited</h1>
 <button class="open-btn" onclick="openInvite()">Open Invitation</button>
 </div>
 
+<!-- HERO -->
 <section class="hero fade-up">
+<div class="floral-left">❦</div>
+<div class="floral-right">❦</div>
+
+<p class="invite-line">
+You are cordially invited to celebrate the wedding of
+</p>
+
 <div class="names">Aswathi Ashokan</div>
 <div class="and">&</div>
 <div class="names">Sam Sunil</div>
-<p class="quote">
-Two souls, one journey, a lifetime together.
+
+<p class="invite-bottom">
+WE WOULD LIKE TO INVITE YOU TO CELEBRATE WITH US THE MOST SPECIAL DAY OF OUR LIVES.
+IT WOULD BE AN HONOR TO HAVE YOU PRESENT AT THIS IMPORTANT MOMENT.
 </p>
 </section>
 
-<section class="fade-up">
-<h2>Wedding Ceremony</h2>
-<div class="gold-line"></div>
+<!-- PARALLAX DIVIDER -->
+<div class="parallax">
+April 27, 2026
+</div>
 
+<!-- DETAILS -->
+<section class="fade-up">
+<div class="gold-line"></div>
 <div class="details-card">
-April 27, 2026<br>
 10:00 AM<br>
 VTAM Auditorium<br>
 Cherthala near Manorama Junction
@@ -206,16 +291,17 @@ Cherthala near Manorama Junction
 View Location
 </a>
 
-<p style="margin-top:30px;font-size:14px;color:#666;">
+<p style="margin-top:35px;font-size:14px;color:#666;">
 Bride: Ashokan U P & Mohini P K<br>
 Groom: Sunil K Samuel & Thresiamma K A
 </p>
 </div>
 </section>
 
+<!-- TIMELINE -->
 <section class="fade-up">
-<h2>Wedding Day Timeline</h2>
 <div class="gold-line"></div>
+<h2 style="font-family:'Playfair Display',serif;">Wedding Day Timeline</h2>
 
 <div class="timeline-item">
 <h4>09:30 AM</h4>
@@ -234,7 +320,7 @@ Groom: Sunil K Samuel & Thresiamma K A
 </section>
 
 <footer>
-We request the honor of your presence and blessings
+We request the honor of your presence and blessings  
 as we begin our new life together.
 </footer>
 
@@ -269,7 +355,6 @@ document.getElementById("countdown").innerHTML = `
 `;
 },1000);
 
-/* Scroll Animation */
 const observer = new IntersectionObserver(entries=>{
 entries.forEach(entry=>{
 if(entry.isIntersecting){
