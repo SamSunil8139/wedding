@@ -34,9 +34,7 @@ position:relative;
 background:linear-gradient(135deg,#7a1f2b,#8e2c3a,#6d1a25);
 }
 
-/* ========================= */
-/* OPENING SCREEN */
-/* ========================= */
+/* ================= OPENING ================= */
 
 #opening{
 position:fixed;
@@ -66,7 +64,6 @@ pointer-events:none;
 width:520px;
 max-width:95%;
 margin-bottom:4px;
-margin-top:0;
 animation:logoZoom 14s ease-in-out infinite alternate;
 }
 
@@ -105,9 +102,7 @@ background:white;
 color:#7a1f2b;
 }
 
-/* ========================= */
-/* PAGE 1 */
-/* ========================= */
+/* ================= PAGE 1 ================= */
 
 .invite-line{
 letter-spacing:3px;
@@ -139,42 +134,72 @@ line-height:1.8;
 opacity:0.9;
 }
 
-/* ========================= */
-/* PHOTO SECTION */
-/* ========================= */
+/* ================= CINEMATIC PHOTO ================= */
 
 .photo-section{
 position:relative;
 height:100vh;
-background:url('couple.jpg') center/cover no-repeat;
+overflow:hidden;
 display:flex;
 justify-content:center;
 align-items:center;
-color:white;
 text-align:center;
+color:white;
 }
 
+/* Parallax Image Layer */
+.photo-bg{
+position:absolute;
+inset:0;
+background:url('couple.jpg') center/cover no-repeat;
+transform:scale(1);
+transition:transform 8s ease;
+filter:contrast(1.05) brightness(0.95);
+}
+
+/* Zoom effect */
+.photo-section:hover .photo-bg{
+transform:scale(1.08);
+}
+
+/* Smooth Feather Blend */
 .photo-overlay{
 position:absolute;
 inset:0;
-background:linear-gradient(to bottom,
-rgba(0,0,0,0.4),
-rgba(0,0,0,0.55));
+background:
+linear-gradient(to top,
+rgba(255,255,255,0.9) 0%,
+rgba(255,255,255,0) 25%),
+linear-gradient(to bottom,
+rgba(122,31,43,0.9) 0%,
+rgba(0,0,0,0.45) 30%,
+rgba(0,0,0,0.6) 70%,
+rgba(255,255,255,0.9) 100%);
+backdrop-filter:blur(2px);
 }
 
+/* Poem */
 .photo-caption{
 position:relative;
 z-index:2;
 font-family:'Cormorant Garamond',serif;
-font-size:34px;
+font-size:36px;
 letter-spacing:1.5px;
 max-width:800px;
 padding:20px;
 line-height:1.6;
+opacity:0;
+transform:translateY(40px);
+transition:all 1.5s ease;
+}
+
+.photo-section.visible .photo-caption{
+opacity:1;
+transform:translateY(0);
 }
 
 .poem-line{
-margin:8px 0;
+margin:10px 0;
 }
 
 /* Divider */
@@ -183,9 +208,7 @@ height:150px;
 background:linear-gradient(to bottom, rgba(122,31,43,1), white);
 }
 
-/* ========================= */
-/* PAGE 2 */
-/* ========================= */
+/* ================= PAGE 2 ================= */
 
 .date-page{
 background:white;
@@ -274,7 +297,8 @@ transition:0.3s;
 background:#5a141d;
 }
 
-/* Mobile */
+/* ================= MOBILE ================= */
+
 @media(max-width:768px){
 
 .names{font-size:32px;}
@@ -282,7 +306,6 @@ background:#5a141d;
 
 .opening-logo{
 width:360px;
-margin-bottom:3px;
 }
 
 .opening-names{
@@ -291,7 +314,6 @@ font-size:26px;
 
 .photo-caption{
 font-size:24px;
-line-height:1.5;
 }
 
 #opening{
@@ -320,9 +342,7 @@ You are cordially invited to celebrate the wedding of
 
 <div class="parent-text">Daughter of Ashokan U P & Mohini P K</div>
 <div class="names">Aswathi Ashokan</div>
-
 <div style="margin:15px 0;">&</div>
-
 <div class="names">Sam Sunil</div>
 <div class="parent-text">Son of Sunil K Samuel & Thresiamma K A</div>
 
@@ -332,14 +352,15 @@ IT WOULD BE AN HONOR TO HAVE YOU PRESENT AT THIS IMPORTANT MOMENT.
 </div>
 </section>
 
-<!-- PHOTO SECTION -->
-<section class="photo-section">
+<!-- CINEMATIC PHOTO -->
+<section class="photo-section" id="photoSection">
+<div class="photo-bg"></div>
 <div class="photo-overlay"></div>
 <div class="photo-caption">
 <div class="poem-line">In your arms, I found my forever,</div>
 <div class="poem-line">In your smile, I found my home.</div>
 <div class="poem-line">Two hearts, one beautiful promise,</div>
-<div class="poem-line">A lifetime to call our own.</div>
+<div class="poem-line">A lifetime written in love.</div>
 </div>
 </section>
 
@@ -347,7 +368,6 @@ IT WOULD BE AN HONOR TO HAVE YOU PRESENT AT THIS IMPORTANT MOMENT.
 
 <!-- PAGE 2 -->
 <section class="section date-page">
-
 <div class="date-big">APRIL 27, 2026</div>
 <div class="time-text">10:00 AM</div>
 
@@ -369,7 +389,6 @@ Cherthala near Manorama Junction
 <a class="map-btn" href="https://maps.app.goo.gl/mobFw1b7dZiGS3Qf7" target="_blank">
 VIEW LOCATION
 </a>
-
 </section>
 
 <script>
@@ -378,17 +397,24 @@ document.getElementById("opening").style.opacity="0";
 setTimeout(()=>{document.getElementById("opening").style.display="none";},1200);
 }
 
-const weddingDate = new Date("April 27, 2026 10:00:00").getTime();
+/* Scroll animation trigger */
+const photoSection = document.getElementById("photoSection");
+window.addEventListener("scroll", ()=>{
+const rect = photoSection.getBoundingClientRect();
+if(rect.top < window.innerHeight - 100){
+photoSection.classList.add("visible");
+}
+});
 
+/* Countdown */
+const weddingDate = new Date("April 27, 2026 10:00:00").getTime();
 setInterval(function(){
 const now = new Date().getTime();
 const distance = weddingDate - now;
-
 const days = Math.floor(distance / (1000*60*60*24));
 const hours = Math.floor((distance % (1000*60*60*24))/(1000*60*60));
 const minutes = Math.floor((distance % (1000*60*60))/(1000*60));
 const seconds = Math.floor((distance % (1000*60))/1000);
-
 document.getElementById("countdown").innerHTML = `
 <div class="time-box"><span>${days}</span>DAYS</div>
 <div class="time-box"><span>${hours}</span>HRS</div>
