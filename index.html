@@ -27,20 +27,25 @@ justify-content:center;
 align-items:center;
 text-align:center;
 padding:40px 20px;
-opacity:0;
-animation:sectionFade 1.5s ease forwards;
-animation-delay:0.6s;
-}
-
-@keyframes sectionFade{
-to{opacity:1;}
+position:relative;
 }
 
 .soft-red{
 background:linear-gradient(135deg,#7a1f2b,#8e2c3a,#6d1a25);
 }
 
-/* Opening Screen */
+/* ✨ VIGNETTE EFFECT FOR PAGE 1 */
+.soft-red::after{
+content:"";
+position:absolute;
+inset:0;
+background:radial-gradient(circle at center,
+rgba(0,0,0,0) 40%,
+rgba(0,0,0,0.35) 100%);
+pointer-events:none;
+}
+
+/* Opening */
 #opening{
 position:fixed;
 width:100%;
@@ -60,12 +65,7 @@ width:440px;
 max-width:95%;
 margin-bottom:20px;
 margin-top:-40px;
-opacity:0;
-animation:logoFade 2s ease forwards, logoZoom 14s ease-in-out infinite alternate;
-}
-
-@keyframes logoFade{
-to{opacity:1;}
+animation:logoZoom 14s ease-in-out infinite alternate;
 }
 
 @keyframes logoZoom{
@@ -73,7 +73,6 @@ from{transform:scale(1);}
 to{transform:scale(1.04);}
 }
 
-/* Opening Text */
 .opening-names{
 font-family:'Cormorant Garamond',serif;
 font-size:32px;
@@ -89,7 +88,6 @@ opacity:0.85;
 margin-bottom:35px;
 }
 
-/* Button */
 .open-btn{
 padding:14px 45px;
 border:1px solid white;
@@ -106,7 +104,7 @@ background:white;
 color:#7a1f2b;
 }
 
-/* Page 1 */
+/* Page 1 Text */
 .invite-line{
 letter-spacing:3px;
 font-size:13px;
@@ -147,6 +145,26 @@ background:linear-gradient(to bottom, rgba(122,31,43,1), white);
 .date-page{
 background:white;
 color:#7a1f2b;
+position:relative;
+overflow:hidden;
+}
+
+/* 🌸 Floral Decorations */
+.floral{
+position:absolute;
+width:200px;
+opacity:0.08;
+}
+
+.floral-top-left{
+top:-20px;
+left:-20px;
+}
+
+.floral-bottom-right{
+bottom:-20px;
+right:-20px;
+transform:rotate(180deg);
 }
 
 .date-big{
@@ -205,13 +223,7 @@ margin-bottom:25px;
 width:500px;
 max-width:95%;
 margin:35px 0;
-opacity:0;
-animation: palaceFade 2s ease forwards;
-animation-delay:0.5s;
-}
-
-@keyframes palaceFade{
-to{opacity:0.95;}
+opacity:0.95;
 }
 
 .map-btn{
@@ -228,18 +240,6 @@ transition:0.3s;
 background:#5a141d;
 }
 
-/* Falling Petals */
-.petal{
-position:fixed;
-top:-50px;
-width:18px;
-opacity:0.8;
-animation:fall linear infinite;
-}
-@keyframes fall{
-to{transform:translateY(110vh) rotate(360deg);}
-}
-
 /* Footer */
 footer{
 padding:60px 20px;
@@ -249,7 +249,6 @@ color:#7a1f2b;
 font-size:14px;
 }
 
-/* Mobile Fix */
 @media(max-width:768px){
 
 .names{font-size:32px;}
@@ -268,23 +267,15 @@ font-size:24px;
 justify-content:flex-start;
 padding-top:22vh;
 }
+
+.floral{
+width:140px;
+}
 }
 </style>
 </head>
 
 <body>
-
-<script>
-for(let i=0;i<20;i++){
-let petal=document.createElementNS("http://www.w3.org/2000/svg","svg");
-petal.setAttribute("viewBox","0 0 24 24");
-petal.classList.add("petal");
-petal.style.left=Math.random()*100+"vw";
-petal.style.animationDuration=(8+Math.random()*8)+"s";
-petal.innerHTML=`<path fill="white" d="M12 2C8 8 4 10 4 14a8 8 0 0016 0c0-4-4-6-8-12z"/>`;
-document.body.appendChild(petal);
-}
-</script>
 
 <!-- Opening -->
 <div id="opening">
@@ -318,6 +309,11 @@ IT WOULD BE AN HONOR TO HAVE YOU PRESENT AT THIS IMPORTANT MOMENT.
 
 <!-- Page 2 -->
 <section class="section date-page">
+
+<!-- Floral Corners -->
+<img src="https://www.svgrepo.com/show/510050/floral.svg" class="floral floral-top-left">
+<img src="https://www.svgrepo.com/show/510050/floral.svg" class="floral floral-bottom-right">
+
 <div class="date-big">APRIL 27, 2026</div>
 <div class="time-text">10:00 AM</div>
 
@@ -335,6 +331,7 @@ Cherthala near Manorama Junction
 <a class="map-btn" href="https://maps.app.goo.gl/mobFw1b7dZiGS3Qf7" target="_blank">
 VIEW LOCATION
 </a>
+
 </section>
 
 <footer>
