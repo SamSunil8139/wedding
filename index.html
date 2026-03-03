@@ -20,21 +20,21 @@ scroll-behavior:smooth;
 
 /* Section Layout */
 .section{
-height:100vh;
+min-height:100vh;
 display:flex;
 flex-direction:column;
 justify-content:center;
 align-items:center;
 text-align:center;
-padding:20px;
+padding:40px 20px;
 }
 
-/* Romantic Red Gradient */
+/* Romantic Gradient */
 .soft-red{
 background:linear-gradient(135deg,#7a1f2b,#8e2c3a,#6d1a25);
 }
 
-/* Opening */
+/* Opening Screen */
 #opening{
 position:fixed;
 width:100%;
@@ -78,7 +78,7 @@ background:white;
 color:#7a1f2b;
 }
 
-/* Names Page */
+/* Page 1 */
 .invite-line{
 letter-spacing:3px;
 font-size:13px;
@@ -115,7 +115,7 @@ height:150px;
 background:linear-gradient(to bottom, rgba(122,31,43,1), white);
 }
 
-/* Date Page */
+/* Page 2 */
 .date-page{
 background:white;
 color:#7a1f2b;
@@ -152,8 +152,8 @@ margin-bottom:15px;
 background:#7a1f2b;
 color:white;
 padding:15px 20px;
-border-radius:10px;
-min-width:70px;
+border-radius:12px;
+min-width:75px;
 }
 
 .time-box span{
@@ -172,14 +172,21 @@ margin-bottom:30px;
 .location-text{
 letter-spacing:2px;
 line-height:1.8;
-margin-bottom:30px;
+margin-bottom:25px;
 }
 
-/* Palace SVG */
-.palace-svg{
-width:360px;
-max-width:90%;
-margin:30px 0;
+/* Palace Image */
+.palace-img{
+width:500px;
+max-width:95%;
+margin:35px 0;
+opacity:0;
+animation: palaceFade 2s ease forwards;
+animation-delay:0.5s;
+}
+
+@keyframes palaceFade{
+to{opacity:0.95;}
 }
 
 /* Button */
@@ -227,7 +234,7 @@ font-size:14px;
 
 <body>
 
-<!-- SVG Petals -->
+<!-- Floating Petals -->
 <script>
 for(let i=0;i<20;i++){
 let petal=document.createElementNS("http://www.w3.org/2000/svg","svg");
@@ -240,7 +247,7 @@ document.body.appendChild(petal);
 }
 </script>
 
-<!-- Opening -->
+<!-- Opening Screen -->
 <div id="opening">
 <div class="monogram">A & S</div>
 <div class="sub-text">A CELEBRATION OF LOVE</div>
@@ -286,24 +293,7 @@ VTAM Auditorium<br>
 Cherthala near Manorama Junction
 </div>
 
-<!-- Clean Line Palace SVG -->
-<svg class="palace-svg" viewBox="0 0 800 300">
-<g fill="none" stroke="#7a1f2b" stroke-width="4">
-
-<rect x="100" y="150" width="600" height="100"/>
-<polygon points="80,150 400,60 720,150"/>
-
-<rect x="120" y="100" width="150" height="150"/>
-<polygon points="100,100 195,60 290,100"/>
-
-<rect x="530" y="100" width="150" height="150"/>
-<polygon points="510,100 605,60 700,100"/>
-
-<rect x="340" y="120" width="120" height="130"/>
-<rect x="380" y="170" width="40" height="80"/>
-
-</g>
-</svg>
+<img src="palace.png" class="palace-img">
 
 <a class="map-btn" href="https://maps.app.goo.gl/mobFw1b7dZiGS3Qf7" target="_blank">
 VIEW LOCATION
