@@ -56,10 +56,10 @@ transition:1.2s ease;
 
 /* Logo */
 .opening-logo{
-width:440px; /* 15% bigger */
+width:440px;
 max-width:95%;
 margin-bottom:20px;
-margin-top:-40px; /* move slightly upward */
+margin-top:-40px;
 opacity:0;
 animation:logoFade 2s ease forwards, logoZoom 14s ease-in-out infinite alternate;
 }
@@ -228,6 +228,7 @@ transition:0.3s;
 background:#5a141d;
 }
 
+/* Falling Petals */
 .petal{
 position:fixed;
 top:-50px;
@@ -239,6 +240,7 @@ animation:fall linear infinite;
 to{transform:translateY(110vh) rotate(360deg);}
 }
 
+/* Footer */
 footer{
 padding:60px 20px;
 text-align:center;
@@ -247,10 +249,25 @@ color:#7a1f2b;
 font-size:14px;
 }
 
+/* Mobile Fix */
 @media(max-width:768px){
+
 .names{font-size:32px;}
 .date-big{font-size:36px;}
-.opening-logo{width:300px;margin-top:-20px;}
+
+.opening-logo{
+width:320px;
+margin-top:-60px;
+}
+
+.opening-names{
+font-size:24px;
+}
+
+#opening{
+justify-content:flex-start;
+padding-top:22vh;
+}
 }
 </style>
 </head>
