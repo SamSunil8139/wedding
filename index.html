@@ -52,14 +52,14 @@ transition:1.2s ease;
 position:relative;
 }
 
-/* Vignette ONLY on opening */
+/* Softer Vignette (Reduced 20%) */
 #opening::after{
 content:"";
 position:absolute;
 inset:0;
 background:radial-gradient(circle at center,
-rgba(0,0,0,0) 40%,
-rgba(0,0,0,0.45) 100%);
+rgba(0,0,0,0) 45%,
+rgba(0,0,0,0.35) 100%);
 pointer-events:none;
 }
 
@@ -154,26 +154,6 @@ background:linear-gradient(to bottom, rgba(122,31,43,1), white);
 .date-page{
 background:white;
 color:#7a1f2b;
-position:relative;
-overflow:hidden;
-}
-
-/* Floral Decorations */
-.floral{
-position:absolute;
-width:180px;
-opacity:0.08;
-}
-
-.floral-top-left{
-top:-30px;
-left:-30px;
-}
-
-.floral-bottom-right{
-bottom:-30px;
-right:-30px;
-transform:rotate(180deg);
 }
 
 .date-big{
@@ -268,10 +248,6 @@ font-size:24px;
 justify-content:flex-start;
 padding-top:22vh;
 }
-
-.floral{
-width:120px;
-}
 }
 </style>
 </head>
@@ -310,16 +286,6 @@ IT WOULD BE AN HONOR TO HAVE YOU PRESENT AT THIS IMPORTANT MOMENT.
 
 <!-- Page 2 -->
 <section class="section date-page">
-
-<!-- Floral SVG Inline -->
-<svg class="floral floral-top-left" viewBox="0 0 200 200">
-<path fill="#7a1f2b" d="M100 10 C120 40, 180 40, 190 100 C160 80, 140 120, 100 190 C60 120, 40 80, 10 100 C20 40, 80 40, 100 10Z"/>
-</svg>
-
-<svg class="floral floral-bottom-right" viewBox="0 0 200 200">
-<path fill="#7a1f2b" d="M100 10 C120 40, 180 40, 190 100 C160 80, 140 120, 100 190 C60 120, 40 80, 10 100 C20 40, 80 40, 100 10Z"/>
-</svg>
-
 <div class="date-big">APRIL 27, 2026</div>
 <div class="time-text">10:00 AM</div>
 
@@ -337,7 +303,6 @@ Cherthala near Manorama Junction
 <a class="map-btn" href="https://maps.app.goo.gl/mobFw1b7dZiGS3Qf7" target="_blank">
 VIEW LOCATION
 </a>
-
 </section>
 
 <script>
