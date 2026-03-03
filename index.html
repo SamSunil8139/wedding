@@ -18,10 +18,7 @@ overflow-x:hidden;
 scroll-behavior:smooth;
 }
 
-/* ========================= */
-/* SECTION BASE */
-/* ========================= */
-
+/* Section Base */
 .section{
 min-height:100vh;
 display:flex;
@@ -31,7 +28,6 @@ align-items:center;
 text-align:center;
 padding:40px 20px;
 position:relative;
-z-index:2;
 }
 
 .soft-red{
@@ -56,34 +52,15 @@ transition:1.2s ease;
 overflow:hidden;
 }
 
-/* Floral Frame Overlay */
-.floral-frame{
-position:absolute;
-inset:0;
-width:100%;
-height:100%;
-object-fit:cover;
-pointer-events:none;
-opacity:0.9;
-z-index:1;
-}
-
-/* Vignette (Softer) */
+/* Soft Vignette */
 #opening::after{
 content:"";
 position:absolute;
 inset:0;
 background:radial-gradient(circle at center,
-rgba(0,0,0,0) 50%,
-rgba(0,0,0,0.35) 100%);
+rgba(0,0,0,0) 55%,
+rgba(0,0,0,0.30) 100%);
 pointer-events:none;
-z-index:2;
-}
-
-/* Content above florals */
-#opening > *{
-position:relative;
-z-index:3;
 }
 
 /* Logo */
@@ -253,10 +230,7 @@ transition:0.3s;
 background:#5a141d;
 }
 
-/* ========================= */
-/* MOBILE FIX */
-/* ========================= */
-
+/* Mobile Fix */
 @media(max-width:768px){
 
 .names{font-size:32px;}
@@ -281,16 +255,15 @@ padding-top:22vh;
 
 <body>
 
-<!-- OPENING -->
+<!-- Opening -->
 <div id="opening">
-<img src="floral-frame.png" class="floral-frame">
 <img src="logo.png" class="opening-logo">
 <div class="opening-names">Sam & Aswathi</div>
 <div class="opening-date">27 April 2026</div>
 <button class="open-btn" onclick="openInvite()">Open Invitation</button>
 </div>
 
-<!-- PAGE 1 -->
+<!-- Page 1 -->
 <section class="section soft-red">
 <div class="invite-line">
 You are cordially invited to celebrate the wedding of
@@ -312,7 +285,7 @@ IT WOULD BE AN HONOR TO HAVE YOU PRESENT AT THIS IMPORTANT MOMENT.
 
 <div class="fade-divider"></div>
 
-<!-- PAGE 2 -->
+<!-- Page 2 -->
 <section class="section date-page">
 <div class="date-big">APRIL 27, 2026</div>
 <div class="time-text">10:00 AM</div>
