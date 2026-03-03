@@ -5,25 +5,33 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Aswathi & Sam | Wedding</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;700&family=Raleway:wght@300;400;500&display=swap" rel="stylesheet">
 
 <style>
 *{margin:0;padding:0;box-sizing:border-box;}
 
 body{
-font-family:'Montserrat',sans-serif;
-background:linear-gradient(135deg,#7b0f1e,#a4161a,#ba181b);
-background-size:400% 400%;
-animation:bgShift 12s ease infinite;
+font-family:'Raleway',sans-serif;
+background:#7a1f2b;
 color:white;
 overflow-x:hidden;
 scroll-behavior:smooth;
 }
 
-@keyframes bgShift{
-0%{background-position:0% 50%;}
-50%{background-position:100% 50%;}
-100%{background-position:0% 50%;}
+/* Softer Romantic Gradient */
+.section{
+height:100vh;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+text-align:center;
+padding:20px;
+position:relative;
+}
+
+.soft-red{
+background:linear-gradient(135deg,#7a1f2b,#8e2c3a,#6d1a25);
 }
 
 /* Opening */
@@ -31,251 +39,208 @@ scroll-behavior:smooth;
 position:fixed;
 width:100%;
 height:100vh;
-background:linear-gradient(135deg,#7b0f1e,#a4161a);
+background:linear-gradient(135deg,#6d1a25,#8e2c3a);
 display:flex;
 flex-direction:column;
 justify-content:center;
 align-items:center;
 z-index:1000;
-transition:1s ease;
-text-align:center;
+transition:1.2s ease;
 }
 
 .monogram{
-font-family:'Playfair Display',serif;
-font-size:60px;
-letter-spacing:8px;
-margin-bottom:20px;
+font-family:'Cormorant Garamond',serif;
+font-size:70px;
+letter-spacing:10px;
+margin-bottom:10px;
+}
+
+.sub-text{
+letter-spacing:4px;
+font-size:14px;
+margin-bottom:40px;
+opacity:0.8;
 }
 
 .open-btn{
-padding:14px 40px;
-border:none;
-background:white;
-color:#a4161a;
-font-weight:600;
+padding:14px 45px;
+border:1px solid white;
+background:transparent;
+color:white;
+font-size:14px;
+letter-spacing:2px;
 border-radius:50px;
 cursor:pointer;
+transition:0.4s;
+}
+.open-btn:hover{
+background:white;
+color:#7a1f2b;
 }
 
-/* Hero */
-section{
-padding:120px 20px;
-text-align:center;
-max-width:900px;
-margin:auto;
-position:relative;
+/* Floral SVG Decoration */
+.corner{
+position:absolute;
+width:120px;
+opacity:0.2;
+}
+.top-left{top:20px;left:20px;}
+.top-right{top:20px;right:20px;}
+.bottom-left{bottom:20px;left:20px;}
+.bottom-right{bottom:20px;right:20px;}
+
+/* Names Page */
+.names{
+font-family:'Cormorant Garamond',serif;
+font-size:52px;
+letter-spacing:3px;
 }
 
 .invite-line{
-font-size:13px;
 letter-spacing:3px;
-text-transform:uppercase;
-opacity:0.8;
+font-size:13px;
 margin-bottom:40px;
-}
-
-.names{
-font-family:'Playfair Display',serif;
-font-size:46px;
-opacity:0;
-transform:translateY(30px);
-animation:fadeUp 1.5s ease forwards;
-}
-
-.names:nth-child(3){animation-delay:0.5s;}
-.names:nth-child(5){animation-delay:1s;}
-
-@keyframes fadeUp{
-to{opacity:1;transform:translateY(0);}
-}
-
-.and{
-margin:20px 0;
-font-size:20px;
-letter-spacing:6px;
+opacity:0.9;
 }
 
 .invite-bottom{
 margin-top:40px;
+max-width:650px;
 font-size:14px;
 letter-spacing:2px;
-text-transform:uppercase;
 line-height:1.8;
 opacity:0.9;
 }
 
-/* Romantic SVG Floral Frame */
-.frame{
-position:absolute;
-top:20px;
-left:50%;
-transform:translateX(-50%);
-opacity:0.08;
+/* Date Page */
+.date-big{
+font-family:'Cormorant Garamond',serif;
+font-size:60px;
+letter-spacing:5px;
 }
 
-/* Rose Petals */
-.petal{
-position:fixed;
-top:-20px;
-font-size:20px;
-animation:fall linear infinite;
-opacity:0.7;
-}
-@keyframes fall{
-to{transform:translateY(110vh) rotate(360deg);}
+.details{
+margin-top:20px;
+letter-spacing:2px;
 }
 
-/* Parallax Divider */
-.parallax{
-height:300px;
-background:linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)),
-url('https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1200&q=60');
-background-attachment:fixed;
-background-size:cover;
-background-position:center;
-display:flex;
-align-items:center;
-justify-content:center;
-font-family:'Playfair Display',serif;
-font-size:32px;
-letter-spacing:3px;
+/* Fade to White Transition */
+.fade-divider{
+height:150px;
+background:linear-gradient(to bottom, rgba(122,31,43,1), white);
 }
 
-/* Details */
+/* Details Card */
 .details-card{
 background:white;
-color:#7b0f1e;
+color:#7a1f2b;
 padding:60px 40px;
 border-radius:25px;
-box-shadow:0 15px 50px rgba(0,0,0,0.4);
-margin-top:80px;
-}
-
-.countdown{
-display:flex;
-justify-content:center;
-gap:15px;
-margin-top:30px;
-flex-wrap:wrap;
-}
-
-.time-box{
-background:#fceaea;
-padding:15px 25px;
-border-radius:15px;
-}
-
-.time-box span{
-display:block;
-font-weight:600;
+box-shadow:0 20px 60px rgba(0,0,0,0.3);
+margin-top:60px;
+max-width:700px;
 }
 
 .map-btn{
 margin-top:30px;
 display:inline-block;
 padding:14px 35px;
-background:#a4161a;
+background:#7a1f2b;
 color:white;
 border-radius:30px;
 text-decoration:none;
+}
+
+/* SVG Petals Animation */
+.petal{
+position:fixed;
+top:-50px;
+width:20px;
+opacity:0.8;
+animation:fall linear infinite;
+}
+@keyframes fall{
+to{transform:translateY(110vh) rotate(360deg);}
 }
 
 /* Footer */
 footer{
 padding:80px 20px;
 text-align:center;
-opacity:0.8;
-}
-
-/* Scroll Reveal */
-.fade-up{
-opacity:0;
-transform:translateY(40px);
-transition:1.2s ease;
-}
-.fade-up.show{
-opacity:1;
-transform:translateY(0);
+background:white;
+color:#7a1f2b;
 }
 
 @media(max-width:768px){
-.names{font-size:30px;}
-.parallax{background-attachment:scroll;}
+.names{font-size:32px;}
+.date-big{font-size:38px;}
 }
 </style>
 </head>
 
 <body>
 
-<!-- Floating Petals -->
+<!-- SVG Petals -->
 <script>
-for(let i=0;i<25;i++){
-let p=document.createElement("div");
-p.className="petal";
-p.innerHTML="🌹";
-p.style.left=Math.random()*100+"vw";
-p.style.animationDuration=(8+Math.random()*8)+"s";
-document.body.appendChild(p);
+for(let i=0;i<20;i++){
+let petal=document.createElementNS("http://www.w3.org/2000/svg","svg");
+petal.setAttribute("viewBox","0 0 24 24");
+petal.classList.add("petal");
+petal.style.left=Math.random()*100+"vw";
+petal.style.animationDuration=(8+Math.random()*8)+"s";
+petal.innerHTML=`<path fill="white" d="M12 2C8 8 4 10 4 14a8 8 0 0016 0c0-4-4-6-8-12z"/>`;
+document.body.appendChild(petal);
 }
 </script>
 
 <!-- Opening Screen -->
 <div id="opening">
 <div class="monogram">A & S</div>
+<div class="sub-text">A CELEBRATION OF LOVE</div>
 <button class="open-btn" onclick="openInvite()">Open Invitation</button>
 </div>
 
-<!-- Hero -->
-<section class="fade-up">
-
-<svg class="frame" width="400" height="200" viewBox="0 0 400 200">
-<ellipse cx="200" cy="100" rx="180" ry="80"
-stroke="white" stroke-width="2" fill="none"/>
-</svg>
-
-<p class="invite-line">
+<!-- Page 1 Names -->
+<section class="section soft-red">
+<div class="invite-line">
 You are cordially invited to celebrate the wedding of
-</p>
-
-<div class="names">Aswathi Ashokan</div>
-<div class="and">&</div>
-<div class="names">Sam Sunil</div>
-
-<p class="invite-bottom">
-WE WOULD LIKE TO INVITE YOU TO CELEBRATE WITH US THE MOST SPECIAL DAY OF OUR LIVES.
-IT WOULD BE AN HONOR TO HAVE YOU PRESENT AT THIS IMPORTANT MOMENT.
-</p>
-
-</section>
-
-<!-- Parallax -->
-<div class="parallax">
-April 27, 2026
 </div>
 
-<!-- Details -->
-<section class="fade-up">
-<div class="details-card">
+<div class="names">Aswathi Ashokan</div>
+<div style="margin:20px 0;">&</div>
+<div class="names">Sam Sunil</div>
+
+<div class="invite-bottom">
+WE WOULD LIKE TO INVITE YOU TO CELEBRATE WITH US THE MOST SPECIAL DAY OF OUR LIVES.
+IT WOULD BE AN HONOR TO HAVE YOU PRESENT AT THIS IMPORTANT MOMENT.
+</div>
+</section>
+
+<div class="fade-divider"></div>
+
+<!-- Page 2 Date -->
+<section class="section" style="background:white;color:#7a1f2b;">
+<div class="date-big">APRIL 27, 2026</div>
+<div class="details">
 10:00 AM<br>
 VTAM Auditorium<br>
 Cherthala near Manorama Junction
+</div>
 
-<div class="countdown" id="countdown"></div>
+<div class="details-card">
+Bride: Ashokan U P & Mohini P K<br>
+Groom: Sunil K Samuel & Thresiamma K A
+
+<br><br>
 
 <a class="map-btn" href="https://maps.app.goo.gl/mobFw1b7dZiGS3Qf7" target="_blank">
 View Location
 </a>
-
-<p style="margin-top:35px;font-size:14px;">
-Bride: Ashokan U P & Mohini P K<br>
-Groom: Sunil K Samuel & Thresiamma K A
-</p>
 </div>
 </section>
 
 <footer>
-With love and blessings,  
+With love and blessings,<br>
 We look forward to celebrating together.
 </footer>
 
@@ -286,40 +251,9 @@ We look forward to celebrating together.
 <script>
 function openInvite(){
 document.getElementById("opening").style.opacity="0";
-setTimeout(()=>{document.getElementById("opening").style.display="none";},1000);
+setTimeout(()=>{document.getElementById("opening").style.display="none";},1200);
 document.getElementById("bgMusic").play();
 }
-
-const weddingDate = new Date("April 27, 2026 10:00:00").getTime();
-
-setInterval(function(){
-const now = new Date().getTime();
-const distance = weddingDate - now;
-
-const days = Math.floor(distance / (1000*60*60*24));
-const hours = Math.floor((distance % (1000*60*60*24))/(1000*60*60));
-const minutes = Math.floor((distance % (1000*60*60))/(1000*60));
-const seconds = Math.floor((distance % (1000*60))/1000);
-
-document.getElementById("countdown").innerHTML = `
-<div class="time-box"><span>${days}</span>Days</div>
-<div class="time-box"><span>${hours}</span>Hours</div>
-<div class="time-box"><span>${minutes}</span>Minutes</div>
-<div class="time-box"><span>${seconds}</span>Seconds</div>
-`;
-},1000);
-
-const observer = new IntersectionObserver(entries=>{
-entries.forEach(entry=>{
-if(entry.isIntersecting){
-entry.target.classList.add('show');
-}
-});
-},{threshold:0.2});
-
-document.querySelectorAll('.fade-up').forEach(el=>{
-observer.observe(el);
-});
 </script>
 
 </body>
