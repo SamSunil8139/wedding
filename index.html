@@ -18,8 +18,7 @@ overflow-x:hidden;
 scroll-behavior:smooth;
 }
 
-/* ================= SECTION BASE ================= */
-
+/* SECTION BASE */
 .section{
 min-height:100vh;
 display:flex;
@@ -35,8 +34,7 @@ position:relative;
 background:linear-gradient(135deg,#7a1f2b,#8e2c3a,#6d1a25);
 }
 
-/* ================= OPENING ================= */
-
+/* OPENING */
 #opening{
 position:fixed;
 width:100%;
@@ -48,17 +46,6 @@ justify-content:center;
 align-items:center;
 z-index:1000;
 transition:1.2s ease;
-overflow:hidden;
-}
-
-#opening::after{
-content:"";
-position:absolute;
-inset:0;
-background:radial-gradient(circle at center,
-rgba(0,0,0,0) 60%,
-rgba(0,0,0,0.28) 100%);
-pointer-events:none;
 }
 
 .opening-logo{
@@ -103,40 +90,13 @@ background:white;
 color:#7a1f2b;
 }
 
-/* ================= PAGE 1 ================= */
+/* PAGE 1 */
+.invite-line{letter-spacing:3px;font-size:13px;margin-bottom:40px;opacity:0.9;}
+.parent-text{font-size:14px;letter-spacing:2px;margin-bottom:10px;opacity:0.85;}
+.names{font-family:'Cormorant Garamond',serif;font-size:52px;letter-spacing:3px;margin-bottom:20px;}
+.invite-bottom{margin-top:40px;max-width:650px;font-size:14px;letter-spacing:2px;line-height:1.8;opacity:0.9;}
 
-.invite-line{
-letter-spacing:3px;
-font-size:13px;
-margin-bottom:40px;
-opacity:0.9;
-}
-
-.parent-text{
-font-size:14px;
-letter-spacing:2px;
-margin-bottom:10px;
-opacity:0.85;
-}
-
-.names{
-font-family:'Cormorant Garamond',serif;
-font-size:52px;
-letter-spacing:3px;
-margin-bottom:20px;
-}
-
-.invite-bottom{
-margin-top:40px;
-max-width:650px;
-font-size:14px;
-letter-spacing:2px;
-line-height:1.8;
-opacity:0.9;
-}
-
-/* ================= PHOTO SECTION ================= */
-
+/* PHOTO */
 .photo-section{
 position:relative;
 height:100vh;
@@ -146,10 +106,8 @@ align-items:center;
 text-align:center;
 color:white;
 background:url('couple.JPG') center/cover no-repeat;
-overflow:hidden;
 }
 
-/* Subtle overlay for readability */
 .photo-section::before{
 content:"";
 position:absolute;
@@ -169,90 +127,64 @@ line-height:1.6;
 text-shadow: 0 4px 15px rgba(0,0,0,0.5);
 }
 
-.poem-line{
-margin:10px 0;
-}
+.poem-line{margin:10px 0;}
 
-/* Divider */
 .fade-divider{
 height:150px;
 background:linear-gradient(to bottom, rgba(122,31,43,1), white);
 }
 
-/* ================= PAGE 2 ================= */
-
-.date-page{
-background:white;
-color:#7a1f2b;
-}
-
-.date-big{
-font-family:'Cormorant Garamond',serif;
-font-size:60px;
-letter-spacing:5px;
-margin-bottom:10px;
-}
-
-.time-text{
-letter-spacing:3px;
-margin-bottom:25px;
-}
-
-.countdown-title{
-letter-spacing:4px;
-font-size:14px;
-margin-bottom:15px;
-font-weight:600;
-}
+/* PAGE 2 */
+.date-page{background:white;color:#7a1f2b;}
+.date-big{font-family:'Cormorant Garamond',serif;font-size:60px;letter-spacing:5px;margin-bottom:10px;}
+.time-text{letter-spacing:3px;margin-bottom:25px;}
+.countdown-title{letter-spacing:4px;font-size:14px;margin-bottom:20px;font-weight:600;}
 
 .countdown{
 display:flex;
-gap:15px;
-flex-wrap:wrap;
+gap:20px;
 justify-content:center;
-margin-bottom:15px;
+flex-wrap:wrap;
+margin-bottom:20px;
+perspective:1000px;
 }
 
-.time-box{
+.flip-box{
+width:90px;
+height:110px;
+position:relative;
+}
+
+.flip-card{
+width:100%;
+height:100%;
 background:#7a1f2b;
 color:white;
-padding:15px 20px;
 border-radius:12px;
-min-width:75px;
-}
-
-.time-box span{
-display:block;
-font-size:20px;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+font-size:28px;
 font-weight:600;
+transform-style:preserve-3d;
+transition:transform 0.6s;
 }
 
-.until-text{
-letter-spacing:3px;
-font-size:13px;
-margin-bottom:25px;
-font-weight:600;
+.flip-card.flip{
+transform:rotateX(180deg);
 }
 
-.celebration-text{
-letter-spacing:3px;
-font-size:13px;
-margin-bottom:20px;
-font-weight:600;
-}
-
-.location-text{
+.label{
+font-size:12px;
 letter-spacing:2px;
-line-height:1.8;
-margin-bottom:25px;
+margin-top:5px;
 }
 
-.palace-img{
-width:500px;
-max-width:95%;
-margin:35px 0;
-opacity:0.95;
-}
+.until-text{letter-spacing:3px;font-size:13px;margin-bottom:25px;font-weight:600;}
+.celebration-text{letter-spacing:3px;font-size:13px;margin-bottom:20px;font-weight:600;}
+.location-text{letter-spacing:2px;line-height:1.8;margin-bottom:25px;}
+.palace-img{width:500px;max-width:95%;margin:35px 0;opacity:0.95;}
 
 .map-btn{
 padding:14px 40px;
@@ -264,40 +196,21 @@ font-size:14px;
 letter-spacing:2px;
 transition:0.3s;
 }
-.map-btn:hover{
-background:#5a141d;
-}
-
-/* ================= MOBILE ================= */
+.map-btn:hover{background:#5a141d;}
 
 @media(max-width:768px){
-
 .names{font-size:32px;}
 .date-big{font-size:36px;}
-
-.opening-logo{
-width:360px;
-}
-
-.opening-names{
-font-size:26px;
-}
-
-.photo-caption{
-font-size:24px;
-}
-
-#opening{
-justify-content:flex-start;
-padding-top:22vh;
-}
+.opening-logo{width:360px;}
+.opening-names{font-size:26px;}
+.photo-caption{font-size:24px;}
+#opening{justify-content:flex-start;padding-top:22vh;}
 }
 </style>
 </head>
 
 <body>
 
-<!-- OPENING -->
 <div id="opening">
 <img src="logo.png" class="opening-logo">
 <div class="opening-names">Sam & Aswathi</div>
@@ -305,25 +218,19 @@ padding-top:22vh;
 <button class="open-btn" onclick="openInvite()">Open Invitation</button>
 </div>
 
-<!-- PAGE 1 -->
 <section class="section soft-red">
-<div class="invite-line">
-You are cordially invited to celebrate the wedding of
-</div>
-
+<div class="invite-line">You are cordially invited to celebrate the wedding of</div>
 <div class="parent-text">Daughter of Ashokan U P & Mohini P K</div>
 <div class="names">Aswathi Ashokan</div>
 <div style="margin:15px 0;">&</div>
 <div class="names">Sam Sunil</div>
 <div class="parent-text">Son of Sunil K Samuel & Thresiamma K A</div>
-
 <div class="invite-bottom">
 WE WOULD LIKE TO INVITE YOU TO CELEBRATE WITH US THE MOST SPECIAL DAY OF OUR LIVES.
 IT WOULD BE AN HONOR TO HAVE YOU PRESENT AT THIS IMPORTANT MOMENT.
 </div>
 </section>
 
-<!-- PHOTO SECTION -->
 <section class="photo-section">
 <div class="photo-caption">
 <div class="poem-line">In your arms, I found my forever,</div>
@@ -335,18 +242,20 @@ IT WOULD BE AN HONOR TO HAVE YOU PRESENT AT THIS IMPORTANT MOMENT.
 
 <div class="fade-divider"></div>
 
-<!-- PAGE 2 -->
 <section class="section date-page">
 <div class="date-big">APRIL 27, 2026</div>
 <div class="time-text">10:00 AM</div>
 
 <div class="countdown-title">COUNTDOWN</div>
-<div class="countdown" id="countdown"></div>
-<div class="until-text">UNTIL THE BIG DAY</div>
-
-<div class="celebration-text">
-THE CELEBRATION WILL TAKE PLACE AT
+<div class="countdown">
+<div class="flip-box"><div class="flip-card" id="days"></div><div class="label">DAYS</div></div>
+<div class="flip-box"><div class="flip-card" id="hours"></div><div class="label">HRS</div></div>
+<div class="flip-box"><div class="flip-card" id="minutes"></div><div class="label">MIN</div></div>
+<div class="flip-box"><div class="flip-card" id="seconds"></div><div class="label">SEC</div></div>
 </div>
+
+<div class="until-text">UNTIL THE BIG DAY</div>
+<div class="celebration-text">THE CELEBRATION WILL TAKE PLACE AT</div>
 
 <div class="location-text">
 VTAM Auditorium<br>
@@ -363,35 +272,43 @@ VIEW LOCATION
 <script>
 function openInvite(){
 const opening = document.getElementById("opening");
-
-opening.style.opacity = "0";
-
+opening.style.opacity="0";
 setTimeout(()=>{
-opening.style.display = "none";
-document.querySelector(".soft-red").scrollIntoView({
-behavior: "smooth"
-});
+opening.style.display="none";
+document.querySelector(".soft-red").scrollIntoView({behavior:"smooth"});
 },1200);
 }
 
 const weddingDate = new Date("April 27, 2026 10:00:00").getTime();
 
-setInterval(function(){
+function updateCountdown(){
 const now = new Date().getTime();
 const distance = weddingDate - now;
 
-const days = Math.floor(distance / (1000*60*60*24));
-const hours = Math.floor((distance % (1000*60*60*24))/(1000*60*60));
-const minutes = Math.floor((distance % (1000*60))/(1000*60));
-const seconds = Math.floor((distance % (1000*60))/1000);
+const days = Math.floor(distance/(1000*60*60*24));
+const hours = Math.floor((distance%(1000*60*60*24))/(1000*60*60));
+const minutes = Math.floor((distance%(1000*60*60))/(1000*60));
+const seconds = Math.floor((distance%(1000*60))/1000);
 
-document.getElementById("countdown").innerHTML = `
-<div class="time-box"><span>${days}</span>DAYS</div>
-<div class="time-box"><span>${hours}</span>HRS</div>
-<div class="time-box"><span>${minutes}</span>MIN</div>
-<div class="time-box"><span>${seconds}</span>SEC</div>
-`;
-},1000);
+flip("days",days);
+flip("hours",hours);
+flip("minutes",minutes);
+flip("seconds",seconds);
+}
+
+function flip(id,value){
+const el=document.getElementById(id);
+if(el.innerHTML!=value){
+el.classList.add("flip");
+setTimeout(()=>{
+el.innerHTML=value;
+el.classList.remove("flip");
+},300);
+}
+}
+
+setInterval(updateCountdown,1000);
+updateCountdown();
 </script>
 
 </body>
